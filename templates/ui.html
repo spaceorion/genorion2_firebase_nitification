@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+    .box{
+        position:absolute;
+        left:40%;
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+    }
+</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel=stylesheet href="{% static '/css/ui.css' %}">
+    <script src="{% static '/js/ui.js' %}"></script>
+    <title>UI</title>
+</head>
+<body>
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <img src="{% static '/images/EP 5.png' %}"alt="img"/>
+  <a href="#">Add Place</a>
+  <a href="#">Add Member</a>
+  <a href="#">Bill Prediction</a>
+  <a href="#">Setting</a>
+  <a href="#">Whats new</a>
+  {% if user.is_authenticated %}
+    <a href="/logout">Logout</a>
+    <a href="/change_password">ChangePassword</a>
+  {% endif %}
+
+</div>
+
+      <div class="w3-container"style="background-color: #00aced; border-radius: 10px 10px 30px 30px;border: 1px solid;padding: 10px;box-shadow: 1px 8px 18px;height:60px;">
+      <span style="font-size:30px;cursor:pointer;position:relative;left:10px;" onclick="openNav()">&#9776;</span>
+           {% if user.is_authenticated %}
+                        <p style="position: absolute; top: 2%;right: 5%;">{{user.first_name}}</p>
+                        {% endif %}
+ <select id="target"style="position:absolute;left:40%;top:5%;">
+          <div>
+            <option>Choose...</option>
+            <option value="red">Home</option>
+            <option value="green">Apartment</option>
+            <option value="blue">Office</option>
+    </div>
+        <select>
+</div><br/><br/>
+    <div class="red box">
+    <div class="green box">Floor 2</div>
+    <div class="blue box">Floor 3</div>
+    </div><br/><br/>
+    <div class= "w3-container" style="height:125px;background-color:blue;border-radius: 10px 10px 30px 30px;border: 1px solid;padding: 10px;box-shadow: 1px 8px 18px;">
+    <div class="red box">Home Room 1</div>
+    <div class="green box">Apartment Room 1</div>
+    <div class="blue box">office Room 3</div>
+    </div><br/><br/>
+    <div class= "w3-container" style="height:125px;background-color:white;border-radius: 10px 10px 30px 30px;border: 1px solid;padding: 10px;box-shadow: 1px 8px 18px;">
+    <div class="red box">AC</div>
+    <div class="green box">Fan</div>
+    <div class="blue box">Lights</div>
+    </div><br/><br/>
+    <div class= "w3-container" style="height:125px;background-color:pink;border-radius: 10px 10px 30px 30px;border: 1px solid;padding: 10px;box-shadow: 1px 8px 18px;">
+    <div class="red box">Home temperature</div>
+    <div class="green box">Apartment temperature</div>
+    <div class="blue box">office temperature</div>
+    </div><br/><br/>
+</body>
+<script>
+$(document).ready(function(){
+    $("select").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".box").not("." + optionValue).hide();
+                $("." + optionValue).show();
+            } else{
+                $(".box").hide();
+            }
+        });
+    }).change();
+});
+</script>
+</html>

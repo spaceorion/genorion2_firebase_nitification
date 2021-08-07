@@ -1,0 +1,395 @@
+{% load static %}
+{% load embed_video_tags %}
+<!DOCTYPE html>
+<html class="wide wow-animation" lang=en>
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Product</title>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width, height=device-height, initial-scale=1.0">
+<meta http-equiv=X-UA-Compatible content="IE=edge">
+<link rel=stylesheet href=https://unpkg.com/aos@next/dist/aos.css />
+<link rel=icon href="{% static '/images/title-img.png' %}" type=image/x-icon>
+<link rel=stylesheet type=text/css href="//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,900">
+<link rel=stylesheet href="{% static '/css/bootstrap.css' %}">
+<link rel=stylesheet href="{% static '/css/fonts.css' %}">
+<link rel=stylesheet href="{% static '/css/style.css' %}">
+<link rel=stylesheet href="{% static '/css/style1.css' %}">
+<link rel=stylesheet href="{% static '/css/top.css' %}">
+<link rel=stylesheet href="{% static '/css/styledrop.css' %}">
+<link rel=stylesheet type=text/css href="{% static '/css/stylefooter.css' %}">
+<style>.ie-panel{display:none;background:#212121;padding:10px 0;box-shadow:3px 3px 5px 0 rgba(0,0,0,.3);clear:both;text-align:center;position:relative;z-index:1}html.ie-10 .ie-panel,html.lt-ie-10 .ie-panel{display:block}</style>
+</head>
+<body style=background-color:#03090e>
+<div class="preloader"style="background-color: black">
+<div class=preloader-body>
+<div class=cssload-container>
+<div class><img src="{% static '/images/mainpreloader.gif' %}"style="height: 150px;margin-top: -80px;"></div>
+</div>
+</div>
+</div>
+<div class=page>
+<div class=rd-navbar-wrap>
+<nav class="rd-navbar rd-navbar-wide" data-layout=rd-navbar-fixed data-sm-layout=rd-navbar-fixed data-md-layout=rd-navbar-fixed data-md-device-layout=rd-navbar-fixed data-lg-layout=rd-navbar-static data-lg-device-layout=rd-navbar-static data-xl-layout=rd-navbar-static data-xl-device-layout=rd-navbar-static data-lg-stick-up-offset=46px data-xl-stick-up-offset=46px data-xxl-stick-up-offset=46px data-lg-stick-up=true data-xl-stick-up=true data-xxl-stick-up=true>
+<div class=rd-navbar-main-outer>
+<div class=rd-navbar-main>
+<div class=rd-navbar-panel>
+<button class=rd-navbar-toggle data-rd-navbar-toggle=.rd-navbar-nav-wrap style=position:fixed;right:0><span></span></button>
+<div class=rd-navbar-brand><a class=brand href=/><img class=brand-logo-dark img style=height:64px;width:115px;padding-bottom:8px;position:fixed;top:2px;left:25px src="{% static '/images/navlogo1.gif' %}"/></a>
+</div>
+</div>
+<div class=rd-navbar-nav-wrap>
+<ul class=rd-navbar-nav>
+<li class=rd-nav-item><h6 style=margin-top:-10px><a class=rd-nav-link href=/about>About</a></h6>
+</li>
+<li class=rd-nav-item><h6 style=margin-top:-10px><a class="rd-nav-link active" href=/product>Product</a></h6>
+</li>
+<li class=rd-nav-item><h6 style=margin-top:-10px><a class=rd-nav-link href=/buy>Buy <i class="fa fa-shopping-cart" style=font-size:14px;color:#ffffff></i></a></h6>
+</li>
+ {% if user.is_authenticated %}
+    <li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/ui">Hello, {{user.first_name}}</a></h6>
+</li>
+    {% else %}
+    <li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/userlogin">USER</a></h6>
+</li>
+    {% endif %}
+</ul>
+</div>
+</div>
+</div>
+</nav>
+</div>
+<section class="breadcrumbs-custom bg-image context-dark" style="background-image:url({% static '/images/bg12.png' %});height:650px">
+<div class=container>
+<h1 style=margin-top:100px;font-size:60px;padding-left:6%>Our Product</h1><br/>
+<h3 style=margin-top:-14px;padding-left:100px;padding-right:74px>Compact, Secure & Compatible</h3>
+</div>
+</section>
+<div class=about style=background-color:#000>
+<div class=container>
+<div class=row>
+<div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+<div class=about_img>
+<figure style=margin-top:-10px><img src="{% static '/images/gen-m12.png' %}" alt=img style=height:315px;margin-top:50px;padding-top:50px /></figure>
+</div>
+</div>
+<div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
+<div class=about_box style=margin-top:30px>
+<span><h2 style=color:#00aced;margin-left:-10px;font-size:65px;font-weight:400>Gen-M12</h2></span>
+<h5 style=text-align:justify;padding-bottom:50px;margin-left:-10px;color:white;font-size:19px;font-weight:390;line-height:1.7>GEN-M12 is the main module which is required as only 1 device per space. Works in conjunction with a number of GEN-S12 devices, creating a mesh to connect the whole home/office space as a centralized system. The device integrates a series of smart features & multiple sensors.</h5>
+</div>
+</div>
+</div>
+<section>
+<div class=about style=background-color:#000>
+<div class=container>
+<h3 style=color:#00aced;margin-left:-22px><b>Features</b></h3>
+</div>
+</div>
+<div class=about style=background-color:#000;margin-left:-20px>
+<div class=container>
+<div class=row>
+<div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+<div class=about_box style=margin-top:10px;font-size:20px;font-weight:400;line-height:1.66>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Only 1 device is required.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Can work standalone or as Main module.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Supports calling feature (With sim).</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Control up to 12 devices.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;3 speed control switches.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;8 loads upto 10A and 1 heavy load upto 15A.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Access sharing with admin roles.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Lifetime free Software upgrades for device.</h6>
+</div>
+</div>
+<div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+<div class=about_box style=margin-top:10px;font-size:20px>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Continuous Notification via app, calls and SMS.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Fire, gas, light, temperature & humidity sensing.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;IR support for controlling remote based devices.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Battery backup of 6-12 hours.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Power consumption analysis.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Easy upgrades with plug & play devices.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Can be controlled via SMS & Bluetooth.</h6>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class=container>
+<div class=row>
+<div class="col-xl-7 col-lg-7 col-md-7 co-sm-l2">
+<div class="about_box xxx" style=margin-top:40px>
+<span><h2 style=color:#00aced;margin-left:-20px;font-size:65px;font-weight:400>Gen-S12</h2></span>
+<h5 style=text-align:justify;padding-bottom:50px;color:white;margin-left:-20px;font-size:19px;font-weight:390;line-height:1.7>GEN-S12 is the sub module, which can be installed as many as required in a home, office or building. It works perfectly with the GEN-M and extends the capabilities of all the desired functionalities of GEN-M series. It creates a smart mesh with other GEN-S devices and Gem-M for continuous connectivity without internet. The device smartly integrates a series of smart features & multiple sensors.</h5>
+</div>
+</div>
+<div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+<div class=about_img>
+<figure style=margin-top:-10px><img src="{% static '/images/gen-s12.png' %}" alt=img style=height:315px;padding-top:50px;margin-top:50px /></figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section>
+<div class=about style=background-color:#000>
+<div class=container>
+<h3 style=color:#00aced><b>Features</b></h3>
+</div>
+</div>
+<div class=about style=background-color:#000>
+<div class=container>
+<div class=row>
+<div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+<div class=about_box style=margin-top:10px;font-size:20px;font-weight:400;line-height:1.66>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Can work standalone or as Sub module.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Continuous Notification via app.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Control up to 12 devices.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;3 speed control switches.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Fire, gas, light, temperature & humidity sensing.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Power consumption analysis.</h6>
+</div>
+</div>
+<div class="col-xl-5 col-lg-5 col-md-5 co-sm-l2">
+<div class=about_box style=margin-top:10px;font-size:20px>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Battery backup of 6-12 hours.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Easy upgrades with plug & play devices.</h6><br/>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Access sharing with admin roles.</h6>
+<h6 style="color:white"class="fa fa-hand-o-right">&nbsp;&nbsp;Lifetime free Software upgrades for device.</h6><br/><br/><br/><br/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div class=about style=background-color:#000>
+<section class="breadcrumbs-custom bg-image context-dark" style=background-color:#1b1c1c>
+<div class=container>
+<h2 class="breadcrumbs-custom-title"style="color: #00aced;">Technical Features</h2>
+</div>
+</section>
+<div class="row11 tm-gallery">
+<div id=tm-gallery-page-pizza class=tm-gallery-page>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product2.gif' %}" alt=Image class="img-fluid tm-gallery-img" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">The devices can work standalone or in coordination</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product1.gif' %}" alt=Image class="img-fluid tm-gallery-img" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">SMS and calls for notifications support</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product4.gif' %}" alt=Image class="img-fluid tm-gallery-img"style="margin-left:0px;" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">6+ Sensors<br/>light, humidity, temperature, LPG gas leak, fire, buzzer</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product7.gif' %}" alt=Image class="img-fluid tm-gallery-img"style="margin-left:0px;" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">10+ Switches Control with our devices</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product6.gif' %}" alt=Image class="img-fluid tm-gallery-img" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">Build in Speed controllers</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product9.gif' %}" alt=Image class="img-fluid tm-gallery-img"style="margin-left:-32px;" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">Power Consumption analysis</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product5.gif' %}" alt=Image class="img-fluid tm-gallery-img" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">Support for IR devices</h4>
+</figcaption>
+</figure>
+</article>
+<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+<figure>
+<img src="{% static '/images/product3.gif' %}" alt=Image class="img-fluid tm-gallery-img" />
+<figcaption>
+<h4 class="tm-gallery-title"style="text-align: center">Bluetooth range of 5-10 meters</h4>
+</figcaption>
+</figure>
+</article>
+</div>
+</div>
+<section class="breadcrumbs-custom bg-image context-dark" style=background-color:#0b8484>
+<div class=container>
+<h2 class="breadcrumbs-custom-title"style="color: #00aced;">EASY INSTALLATION</h2>
+</div>
+</section>
+<section>
+<div class=photoss>
+<img src="{% static '/images/productHTI.gif' %}"/>
+</div>
+</section>
+<section class="breadcrumbs-custom bg-image context-dark" style=background-color:#27244a>
+<div class=container>
+<h2 class=breadcrumbs-custom-title style=color:#00aced>Future updates</h2>
+</div>
+</section>
+<div class=choose_section_2>
+<div class=container>
+<div class=row>
+<div class=col-sm-4>
+<div class=power_full>
+<div class=icon><a href=#><img src="{% static '/images/producticon1.png' %}"></a></div>
+<h5 class=powerful_text style=text-align:center;color:#00aced>Voice control</h5>
+<h6 class=making_tetx style=font-size:16px;margin-top:20px;text-align:justify;color:#ffffff>Controlling devices instantly with Voice Commands from anywhere.</h6>
+</div>
+</div>
+<div class=col-sm-4>
+<div class=power>
+<div class=icon><a href=#><img src="{% static '/images/producticon2.png' %}"></a></div>
+<h5 class="totaly_text"style="color: #00aced;text-align: center">Indian language support</h5>
+<h6 class=making style=font-size:16px;margin-top:20px;text-align:justify;color:white>With accent & language support, we are working to provide support for multiple Indian languages to control the GenOrion’s devices. </h6>
+</div>
+</div>
+<div class=col-sm-4>
+<div class=power>
+<div class=icon><a href=#><img src="{% static '/images/producticon3.png' %}"></a></div>
+<h5 class="totaly_text"style="color: #00aced;text-align: center">Future IOT device compatible</h5>
+<h6 class=making style=font-size:16px;margin-top:20px;text-align:justify;color:white>With updates the system will be compatible with all the available & upcoming IOT devices.</h6>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class=choose_section_2>
+<div class=container>
+<div class=row>
+<div class=col-sm-4>
+<div class=power_full>
+<div class=icon><a href=#><img src="{% static '/images/producticon4.png' %}"></a></div>
+<h5 class=powerful_text style=text-align:center;color:#00aced>Secure server updates</h5>
+<h6 class=making_tetx style=font-size:16px;margin-top:20px;text-align:justify;margin-bottom:40px;color:white>Providing security is our utmost priority & for the same we are developing our own server for the app & website controls.</h6>
+</div>
+</div>
+<div class=col-sm-4>
+<div class=power_full>
+<div class=icon><a href=#><img src="{% static '/images/producticon5.png' %}"></a></div>
+<h5 class=powerful_text style=text-align:center;color:#00aced>Unlimited Updates</h5>
+<h6 class=making_tetx style=font-size:16px;margin-top:20px;text-align:justify;margin-bottom:40px;color:white>Will provide unlimited software upgrades for both installed hardware & app including bug fixes & future response(with added functionalities).</h6>
+</div>
+</div>
+</div>
+</div>
+</div>
+<section class="section section-xl-custom image-section section-lined" style=background-color:#000000 ;>
+<div class=container>
+<div class=row>
+<div class=col-12>
+<center><h12 class=text-center style=color:#00aced;font-size:50px><b style=margin-bottom:50px>Perceive the Unimaginable ...</b><br/></h12><br/></center>
+<div style=text-align:center>
+<iframe width=360 height=250 style=margin-right:10px;margin-bottom:10px src=https://www.youtube.com/embed/jwZc-jdvh8o frameborder=2 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width=360 height=250 style=margin-right:10px;margin-bottom:10px src=https://www.youtube.com/embed/qvw50t15OHw frameborder=2 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width=360 height=250 style=margin-bottom:10px src=https://www.youtube.com/embed/tiP2vIhdSFk frameborder=2 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="breadcrumbs-custom bg-image context-dark" style=background-color:#000000>
+<div class=container>
+<a class=rd-nav-link href=/contact><h2 class="breadcrumbs-custom-title"style="color: #00aced;font-size: 33px;margin-left: -17px;">Contact us for DEMO ...</h2><h2 class="fa fa-hand-o-up"style="color: #00ACEE;margin-bottom: 10px;font-size: 20px;"></h2></a>
+</div>
+</section>
+<div class="pre-footer-classic bg-gray-700 context-dark">
+<div class="container" style="text-align:center">
+<div class="row row-30 justify-content-lg-between">
+<div class="col-sm-6 col-lg-3 col-xl-3">
+<a class="rd-nav-link" href="/contact"><h5>Contact</h5></a></br>
+<p style="margin-top:5px">Phone</p>
+<p style="color:white"><a class="link-default" href="tel:#">+91-9911757588 </a><h7 class="icon icon-sm link-default mdi mdi-whatsapp"></h7></br>
+<a class="link-default" href="tel:#">+91-9716683984 </a><h7 class="icon icon-sm link-default mdi mdi-whatsapp"></h7>
+<a class="link-default" href="tel:#">+44-7587583357 </a><h7 class="icon icon-sm link-default mdi mdi-whatsapp"></h7></p>
+<p>Email</p>
+<p style="color:white"><a class="link-default" href="mailto:#">contact@genorion.com</a></p>
+<div style="padding-left:0"><a class="link-default" href="/contact"><button class="button button-default button-invariable" type="submit" style="padding-left:50px">Ask Your Queries</button></a></div>
+</div>
+<div class="col-sm-6 col-lg-4 col-xl-3">
+</li>
+<h5>Location</h5>
+<ul class="list list-sm">
+<p style="margin-bottom:10px">Address</p>
+<li>
+<a href="https://www.google.com/maps/place/GenOrion+(SpaceStation+Automation+pvt.+ltd)/@28.6192046,77.0259233,18z/data=!4m5!3m4!1s0x390d0526a85df8b9:0x19dd87f58dd3d9ca!8m2!3d28.6192964!4d77.0264785" target="_blank">
+<p style="color:#ffffff">593, 3rd Floor, Dwarka mor,</p>
+</li>
+<li>
+<p style="color:#ffffff">opp. - Metro pillar-803,</p>
+</li>
+<li>
+<p style="color:#ffffff">New Delhi - 110078,</p>
+</li>
+<li>
+<p style="color:#ffffff">India&nbsp;<i class="fa fa-map-marker" style="font-size:20px;"></i></p></a>
+</li>
+</ul>
+<ul class="list-inline list-inline-sm">
+<li style="padding-left:0"><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-facebook" href="https://www.facebook.com/GenOrion-100527345370103" target="_blank"></a></li>
+<li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-instagram" href="https://www.instagram.com/genorion_offical/" target="_blank"></a></li>
+<li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-youtube-play" href="https://www.youtube.com/channel/UCDVv7CADRQXBczpJZ0_IXUQ" target="_blank"></a></li>
+<li style="padding-left:0"><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-twitter" href="https://twitter.com/GENORION1" target="_blank"></a></li>
+<li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-linkedin" href="https://www.linkedin.com/company/genorion1" target="_blank"></a></li>
+</ul>
+</div>
+<div class="col-lg-4" align="center">
+<h5>Connect to our partners</h5>
+<div class="text-center">
+<a href="https://spaceorion.com/" target="_blank"><img src="{% static '/images/spo.png' %}" alt="" style="height:70px;margin-top:3px;border-radius:50%;"/ target="_blank"></a><br/>
+<a href="https://www.funcinfo.com/" target="_blank"><img src="{% static '/images/FuncInfo.png' %}" alt="" style="height:25px;margin-top:36px;border-radius:0%;"/ target="_blank"></a></br>
+<a href="https://www.xilirprojects.com/" target="_blank"><img src="{% static '/images/footerxilir.png' %}" alt="" style="height:70px;margin-top:36px;border-radius:50%;"/ target="_blank"></a>
+</div>
+<div class="button-wrap">
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="section footer-classic context-dark text-center">
+<div class="container">
+<div class="row row-15 justify-content-lg-between">
+<div class="col-lg-6 col-xl-6 text-lg-left">
+<ul class="list-inline list-inline-lg text-uppercase" style="margin-top:10px">
+<li><a href="/about">About us</a></li>
+<li><a href="/ourteam">Our Team</a></li>
+<li><a href="/join">Careers</a></li>
+</ul>
+</div>
+<div class="col-lg-6 col-xl-6">
+<span style="color:#ffffff!important">COPYRIGHT © 2020 SPACESTATION AUTOMATION PVT. LTD. - ALL RIGHTS RESERVED.</span>
+</div>
+</div>
+</div>
+</footer>
+<div class="snackbars" id="form-output-global"></div>
+<script src="{% static '/js/core.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+{% load static %}
+<div class="rd-navbar-wrap">
+<nav class="rd-navbar rd-navbar-wide" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+<div class="rd-navbar-main-outer">
+<div class="rd-navbar-main">
+<div class="rd-navbar-panel">
+<button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap" style="position:fixed;right:0"><span></span></button>
+<div class="rd-navbar-brand"><a class="brand" href="/"><img class="brand-logo-dark" img style="height:64px;width:115px;padding-bottom:8px;position:fixed;top:2px;left:25px" src="{% static '/images/navlogo1.gif' %}"/></a>
+</div>
+</div>
+<div class="rd-navbar-nav-wrap">
+<ul class="rd-navbar-nav">
+<li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/about">About</a></h6>
+</li>
+<li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/product">Product</a></h6>
+</li>
+<li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/buy">Buy <i class="fa fa-shopping-cart" style="font-size:14px;color:#ffffff"></i></a></h6>
+</li>
+    {% if user.is_authenticated %}
+    <li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/ui">Hello, {{user.first_name}}</a></h6>
+</li>
+    {% else %}
+    <li class="rd-nav-item"><h6 style="margin-top:-10px"><a class="rd-nav-link" href="/userlogin">USER</a></h6>
+</li>
+    {% endif %}
+</ul>
+</div>
+</div>
+</div>
+</nav>
+</div>
+{% block content %}
+{% load static %}
+{% endblock %}
+<div class="pre-footer-classic bg-gray-700 context-dark">
+<div class="container" style="text-align:center">
+<div class="row row-30 justify-content-lg-between">
+<div class="col-sm-6 col-lg-3 col-xl-3">
+<a class="rd-nav-link" href="/contact"><h5>Contact</h5></a></br>
+<p style="margin-top:5px">Phone</p>
+<p style="color:white"><a class="link-default" href="tel:#">+91-9911757588 </a><h7 class="icon icon-sm link-default mdi mdi-whatsapp"></h7></br>
+<a class="link-default" href="tel:#">+91-9716683984 </a><h7 class="icon icon-sm link-default mdi mdi-whatsapp"></h7>
+<a class="link-default" href="tel:#">+44-7587583357 </a><h7 class="icon icon-sm link-default mdi mdi-whatsapp"></h7></p>
+<p>Email</p>
+<p style="color:white"><a class="link-default" href="mailto:#">contact@genorion.com</a></p>
+<div style="padding-left:0"><a class="link-default" href="/contact"><button class="button button-default button-invariable" type="submit" style="padding-left:50px">Ask Your Queries</button></a></div>
+</div>
+<div class="col-sm-6 col-lg-4 col-xl-3">
+</li>
+<h5>Location</h5>
+<ul class="list list-sm">
+<p style="margin-bottom:10px">Address</p>
+<li>
+<a href="https://www.google.com/maps/place/GenOrion+(SpaceStation+Automation+pvt.+ltd)/@28.6192046,77.0259233,18z/data=!4m5!3m4!1s0x390d0526a85df8b9:0x19dd87f58dd3d9ca!8m2!3d28.6192964!4d77.0264785" target="_blank">
+<p style="color:#ffffff">593, 3rd Floor, Dwarka mor,</p>
+</li>
+<li>
+<p style="color:#ffffff">opp. - Metro pillar-803,</p>
+</li>
+<li>
+<p style="color:#ffffff">New Delhi - 110078,</p>
+</li>
+<li>
+<p style="color:#ffffff">India&nbsp;<i class="fa fa-map-marker" style="font-size:20px;"></i></p></a>
+</li>
+</ul>
+<ul class="list-inline list-inline-sm">
+<li style="padding-left:0"><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-facebook" href="https://www.facebook.com/GenOrion-100527345370103" target="_blank"></a></li>
+<li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-instagram" href="https://www.instagram.com/genorion_offical/" target="_blank"></a></li>
+<li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-youtube-play" href="https://www.youtube.com/channel/UCDVv7CADRQXBczpJZ0_IXUQ" target="_blank"></a></li>
+<li style="padding-left:0"><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-twitter" href="https://twitter.com/GENORION1" target="_blank"></a></li>
+<li><a class="icon icon-sm icon-gray-filled icon-circle mdi mdi-linkedin" href="https://www.linkedin.com/company/genorion1" target="_blank"></a></li>
+</ul>
+</div>
+<div class="col-lg-4" align="center">
+<h5>Connect to our partners</h5>
+<div class="text-center">
+<a href="https://spaceorion.com/" target="_blank"><img src="{% static '/images/spo.png' %}" alt="" style="height:70px;margin-top:3px;border-radius:50%;"/ target="_blank"></a><br/>
+<a href="https://www.funcinfo.com/" target="_blank"><img src="{% static '/images/FuncInfo.png' %}" alt="" style="height:25px;margin-top:36px;border-radius:0%;"/ target="_blank"></a></br>
+<a href="https://www.xilirprojects.com/" target="_blank"><img src="{% static '/images/footerxilir.png' %}" alt="" style="height:70px;margin-top:36px;border-radius:50%;"/ target="_blank"></a>
+</div>
+<div class="button-wrap">
+</div>
+</div>
+</div>
+</div>
+</div>
+<footer class="section footer-classic context-dark text-center">
+<div class="container">
+<div class="row row-15 justify-content-lg-between">
+<div class="col-lg-6 col-xl-6 text-lg-left">
+<ul class="list-inline list-inline-lg text-uppercase" style="margin-top:10px">
+<li><a href="/about">About us</a></li>
+<li><a href="/ourteam">Our Team</a></li>
+<li><a href="/join">Careers</a></li>
+</ul>
+</div>
+<div class="col-lg-6 col-xl-6">
+<span style="color:#ffffff!important">COPYRIGHT © 2020 SPACESTATION AUTOMATION PVT. LTD. - ALL RIGHTS RESERVED.</span>
+</div>
+</div>
+</div>
+</footer>
+<div class="snackbars" id="form-output-global"></div>
+<script src="{% static '/js/core.min.js' %}"></script>
+<script src="{% static '/js/script.js' %}"></script>
+</body>
+</html>
