@@ -72,6 +72,7 @@ urlpatterns = [
     path('subuseraccess/', myapp_view.subuaccess),
     path('subuserpalceaccess/', myapp_view.subuplace),
     path('subuserfindall/', myapp_view.subuserfind),
+    path('subfindsubdata/', myapp_view.subuserfindsubuser),
 
     path('getuid/', myapp_view.useridList),
 

@@ -1023,7 +1023,7 @@ def subuserfind(request):
         return Response(dataJson.data)
 
 @api_view(["GET"])
-def subuserfind(request):
+def subuserfindsubuser(request):
     if request.method=="GET":
         data = subuserplace.objects.filter(email=request.GET['email'])
         dataJson = subuserplaceSerializers(data, many=True)
