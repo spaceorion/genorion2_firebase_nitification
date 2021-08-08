@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.db.models.fields import CharField, EmailField
 # from embed_video.fields import EmbedVideoField
@@ -191,12 +190,10 @@ class subuseraccess(models.Model):
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
     emailtest = EmailField()
     email = models.CharField(primary_key=True, max_length=100)
-    # user = models.OneToOneField(User, on_delete=models.CASCADE)
-    # p_id = models.ForeignKey(place, on_delete=models.CASCADE)
-    # f_id = models.ForeignKey(floor, on_delete=models.CASCADE)
 
 class subuserplace(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner_name = models.CharField(max_length=20, blank=True)
     name = models.CharField(max_length=100, blank=False)
     email = models.ForeignKey(subuseraccess, on_delete=models.CASCADE)
     p_id = models.ForeignKey(place, on_delete=models.CASCADE)
@@ -214,6 +211,7 @@ class subuserplace(models.Model):
 
 class tempuser(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner_name = models.CharField(max_length=20, blank=True)
     mobile = models.CharField(max_length=10, blank=True)
     email = EmailField(blank=True)
     name = models.CharField(max_length=100,blank=False)
