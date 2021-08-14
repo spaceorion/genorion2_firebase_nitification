@@ -175,11 +175,11 @@ class pinschedule(models.Model):
 
 class userimages(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
-    images = models.ImageField(upload_to='profile_picture', blank=True, default=defprofoto())
+    images = models.ImageField(upload_to='profile_picture', blank=True)
 
 class SomeModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
-    file = models.CharField(max_length=499999, blank=True)
+    file = models.CharField(max_length=499999, blank=True, default=defprofoto())
 
 class deviceIpAddress(models.Model):
     d_id = models.OneToOneField(allDevices, on_delete=models.CASCADE,primary_key=True)
