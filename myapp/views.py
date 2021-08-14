@@ -673,11 +673,18 @@ def scheduleT(request):
     data1Json = pinscheduleSerializers(data1, many=True)
     dataJson = pinscheduleTimeSerializers(data1, many=True)
     for data in data1Json.data:
+        _date = list(data1Json.data)[0]["date1"]
+        _timing = list(data1Json.data)[0]["timing1"]
+        print(_date)
+        print(_timing)
+        scheduleT._id = data['d_id']
+        print(scheduleT._id)
+        scheduleT.var1 = list(data1Json.data)[0]['pin1Status']
+        print(scheduleT.var1)
         # print(data1Json.data)
         _date = data['date1']
         _timing = data['timing1']
         scheduleT._id = data['d_id']
-        scheduleT.var1 = data['pin1Status']
         scheduleT.var2 = data['pin2Status']
         scheduleT.var3 = data['pin3Status']
         scheduleT.var4 = data['pin4Status']
@@ -695,31 +702,28 @@ def scheduleT(request):
         scheduleT.var16 = data['pin16Status']
         scheduleT.var17 = data['pin17Status']
         scheduleT.var18 = data['pin18Status']
-        print(scheduleT._id)
-        print(scheduleT.var1)
-        print(scheduleT.var2)
-        print(scheduleT.var3)
-        print(scheduleT.var4)
-        print(scheduleT.var5)
-        print(scheduleT.var6)
-        print(scheduleT.var7)
         print(_date, _timing)
         attempt_num = 0  # keep track of how many times we've retried
-        while attempt_num < 100:
+        while attempt_num < 5:
             if (scheduleT.var1 != None):
-                url = 'http://127.0.0.1:8000/getpostdevicePinStatus/'
-                payload = {'TOKEN':'04445fdfdb5d04e35411a127591f14b353b1fc10','put':request.POST.get("yes"),'d_id':request.POST.get("scheduleT._id"), 'pin1Status':request.POST.get('scheduleT.var1')}#'put':"yes" ,'d_id':"scheduleT._id",'pin1Status':"scheduleT.var1"}
-                r = requests.post(url, data = payload)
-                if r.status_code == 200:
-                    data = r.json()
-                    return Response(data, status=status.HTTP_200_OK)
-                # return HttpResponse("updated")
-            elif(scheduleT.var2 != None):
-                payload = {'Token':'04445fdfdb5d04e35411a127591f14b353b1fc10','d_id':request.POST.get("options"),'pin2Status':request.POST.get("price")}
-            r = requests.post(url, data = payload)
-            if r.status_code == 200:
-                data = r.json()
-                return Response(data, status=status.HTTP_200_OK)
+                # url = requests.get('http://127.0.0.1:8000/getpostdevicePinStatus/', headers={'Authorization': '06555aba220d6652f121a834d83d6eacab461562'})
+              #  payload = {'token':'06555aba220d6652f121a834d83d6eacab461562','put':request.POST.get("yes"),'d_id':request.POST.get("scheduleT._id"), 'pin1Status':request.POST.get('scheduleT.var1')}#'put':"yes" ,'d_id':"scheduleT._id",'pin1Status':"scheduleT.var1"}
+                # payload = {'TOKEN':"06555aba220d6652f121a834d83d6eacab461562"} #'put':"yes" ,'d_id':"scheduleT._id",'pin1Status':"scheduleT.var1"}
+                # r = requests.put(url)
+                # print("xxxxx")
+                # if r.status_code == 200:
+                #     data = r.json()
+                #     return Response(data, status=status.HTTP_200_OK)
+                BASE_URL = 'http://127.0.0.1:8000/getpostdevicePinStatus/?api_key=06555aba220d6652f121a834d83d6eacab461562'
+                token = "06555aba220d6652f121a834d83d6eacab461562"
+
+                headers = {'Authorization': "Bearer {}".format(token)}
+                auth_response = requests.get(BASE_URL, headers)
+
+                print("kjhjkj",auth_response.json())
+                
+                attempt_num += 1
+                return HttpResponse("NOT updated")
             else:
                 attempt_num += 1
                 # You can probably use a logger to log the error here

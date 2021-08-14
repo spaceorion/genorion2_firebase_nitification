@@ -13,7 +13,7 @@ import requests
 import os
 from rest_framework.decorators import action
 from twilio.rest import Client, TwilioIpMessagingClient
-from myapp.utils import create_new_ref_number, dt, otplogin
+from myapp.utils import create_new_ref_number, dt, otplogin, defprofoto
 from datetime import date
 # User._meta.get_field('email')._unique = True
 
@@ -175,7 +175,7 @@ class pinschedule(models.Model):
 
 class userimages(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
-    images = models.ImageField(upload_to='profile_picture', blank=True)
+    images = models.ImageField(upload_to='profile_picture', blank=True, default=defprofoto())
 
 class SomeModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
