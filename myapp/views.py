@@ -452,14 +452,6 @@ def roomList(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    elif request.method == "DELETE":
-        data = room.objects.filter(r_id=request.GET['r_id'], d_id=request.GET['d_id'])
-        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
-        # placeJson = subuserplaceSerializers(data, many=True)
-        data.delete()
-        # data2.delete()
-        return Response("removed")
 
 @api_view(["GET"])
 def roomgetList(request):
@@ -483,7 +475,7 @@ def roomgetallList(request):
 
 
 
-@api_view(["GET","POST"])
+@api_view(["GET","POST","DELETE"])
 def deviceList(request):
     if request.method=="GET":
         room_data = device.objects.filter(user = request.user,r_id=request.GET['r_id'])
@@ -497,6 +489,13 @@ def deviceList(request):
             serializer.save()
             return Response("data created", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
+        data = device.objects.filter(r_id=request.GET['r_id'], d_id=request.GET['d_id'])
+        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
+        # placeJson = subuserplaceSerializers(data, many=True)
+        data.delete()
+        # data2.delete()
+        return Response("removed")
 
 @api_view(["GET"])
 def devicegetList(request):
