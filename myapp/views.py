@@ -424,7 +424,7 @@ def flatgetallList(request):
                                 ###########   Add   room   #################
 
 
-@api_view(["GET","POST","PUT"])
+@api_view(["GET","POST","PUT","DELETE"])
 def roomList(request):
     if request.method=="GET":
         room_data = room.objects.filter(user = request.user,flt_id=request.GET['flt_id'])
