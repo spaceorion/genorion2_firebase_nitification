@@ -240,7 +240,7 @@ def useridList(request):
 
 
                                         
-@api_view(["GET","POST","PUT"])
+@api_view(["GET","POST","PUT","DELETE"])
 # @permission_classes([IsAuthenticated])
 def placeList(request):
     if request.method=="GET":
@@ -269,6 +269,13 @@ def placeList(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
+        data = place.objects.filter(p_id=request.GET['p_id'])
+        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
+        # placeJson = subuserplaceSerializers(data, many=True)
+        data.delete()
+        # data2.delete()
+        return Response("removed")
 
 @api_view(["GET"])
 # @permission_classes([IsAuthenticated])
@@ -299,7 +306,7 @@ def placegetallList(request):
                                 ###########   Add   floor   #################
 
 
-@api_view(["GET", "POST","PUT"])
+@api_view(["GET", "POST","PUT","DELETE"])
 def floorList(request):
     if request.method=="GET":
         floor_data = floor.objects.filter(user = request.user,p_id=request.GET['p_id'])
@@ -327,6 +334,13 @@ def floorList(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
+        data = floor.objects.filter(f_id=request.GET['f_id'])
+        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
+        # placeJson = subuserplaceSerializers(data, many=True)
+        data.delete()
+        # data2.delete()
+        return Response("removed")
 
 @api_view(["GET"])
 def floorgetList(request):
@@ -351,7 +365,7 @@ def floorgetallList(request):
                                 ###########   Add   floor   #################
 
 
-@api_view(["GET", "POST","PUT"])
+@api_view(["GET", "POST","PUT","DELETE"])
 def flatList(request):
     if request.method=="GET":
         flat_data = flat.objects.filter(user = request.user,f_id=request.GET['f_id'])
@@ -379,6 +393,13 @@ def flatList(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
+        data = flat.objects.filter(flt_id=request.GET['flt_id'])
+        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
+        # placeJson = subuserplaceSerializers(data, many=True)
+        data.delete()
+        # data2.delete()
+        return Response("removed")
 
 @api_view(["GET"])
 def flatgetList(request):
@@ -431,6 +452,14 @@ def roomList(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == "DELETE":
+        data = room.objects.filter(r_id=request.GET['r_id'], d_id=request.GET['d_id'])
+        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
+        # placeJson = subuserplaceSerializers(data, many=True)
+        data.delete()
+        # data2.delete()
+        return Response("removed")
 
 @api_view(["GET"])
 def roomgetList(request):
