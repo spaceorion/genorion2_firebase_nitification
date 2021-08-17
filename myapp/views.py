@@ -452,6 +452,14 @@ def roomList(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == "DELETE":
+        data = room.objects.filter(r_id=request.GET['r_id'])
+        # data2 = subuseraccess.objects.filter(email=request.GET['email'])
+        # placeJson = subuserplaceSerializers(data, many=True)
+        data.delete()
+        # data2.delete()
+        return Response("removed")
 
 @api_view(["GET"])
 def roomgetList(request):
