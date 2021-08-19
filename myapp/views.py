@@ -713,66 +713,268 @@ def scheduleT(request):
         _timing = list(data1Json.data)[0]["timing1"]
         print(_date)
         print(_timing)
-        scheduleT._id = data['d_id']
-        print(scheduleT._id)
-        scheduleT.var1 = list(data1Json.data)[0]['pin1Status']
-        print(scheduleT.var1)
+        var1 = list(data1Json.data)[0]['pin1Status']
+        print(var1)
         # print(data1Json.data)
-        _date = data['date1']
-        _timing = data['timing1']
-        scheduleT._id = data['d_id']
-        scheduleT.var2 = data['pin2Status']
-        scheduleT.var3 = data['pin3Status']
-        scheduleT.var4 = data['pin4Status']
-        scheduleT.var5 = data['pin5Status']
-        scheduleT.var6 = data['pin6Status']
-        scheduleT.var7 = data['pin7Status']
-        scheduleT.var8 = data['pin8Status']
-        scheduleT.var9 = data['pin9Status']
-        scheduleT.var10 = data['pin10Status']
-        scheduleT.var11 = data['pin11Status']
-        scheduleT.var12 = data['pin12Status']
-        scheduleT.var13 = data['pin13Status']
-        scheduleT.var14 = data['pin14Status']
-        scheduleT.var15 = data['pin15Status']
-        scheduleT.var16 = data['pin16Status']
-        scheduleT.var17 = data['pin17Status']
-        scheduleT.var18 = data['pin18Status']
+        _date = list(data1Json.data)[0]['date1']
+        _timing = list(data1Json.data)[0]['timing1']
+        d_idvar = list(data1Json.data)[0]['d_id']
+        print("asdff",d_idvar)
+        var2 = list(data1Json.data)[0]['pin2Status']
+        var3 = list(data1Json.data)[0]['pin3Status']
+        var4 = list(data1Json.data)[0]['pin4Status']
+        var5 = list(data1Json.data)[0]['pin5Status']
+        var6 = list(data1Json.data)[0]['pin6Status']
+        var7 = list(data1Json.data)[0]['pin7Status']
+        var8 = list(data1Json.data)[0]['pin8Status']
+        var9 = list(data1Json.data)[0]['pin9Status']
+        var10 = list(data1Json.data)[0]['pin10Status']
+        var11 = list(data1Json.data)[0]['pin11Status']
+        var12 = list(data1Json.data)[0]['pin12Status']
+        var13 = list(data1Json.data)[0]['pin13Status']
+        var14 = list(data1Json.data)[0]['pin14Status']
+        var15 = list(data1Json.data)[0]['pin15Status']
+        var16 = list(data1Json.data)[0]['pin16Status']
+        var17 = list(data1Json.data)[0]['pin17Status']
+        var18 = list(data1Json.data)[0]['pin18Status']
         print(_date, _timing)
-        attempt_num = 0  # keep track of how many times we've retried
-        while attempt_num < 5:
-            if (scheduleT.var1 != None):
-                # url = requests.get('http://127.0.0.1:8000/getpostdevicePinStatus/', headers={'Authorization': '06555aba220d6652f121a834d83d6eacab461562'})
-              #  payload = {'token':'06555aba220d6652f121a834d83d6eacab461562','put':request.POST.get("yes"),'d_id':request.POST.get("scheduleT._id"), 'pin1Status':request.POST.get('scheduleT.var1')}#'put':"yes" ,'d_id':"scheduleT._id",'pin1Status':"scheduleT.var1"}
-                # payload = {'TOKEN':"06555aba220d6652f121a834d83d6eacab461562"} #'put':"yes" ,'d_id':"scheduleT._id",'pin1Status':"scheduleT.var1"}
-                # r = requests.put(url)
-                # print("xxxxx")
-                # if r.status_code == 200:
-                #     data = r.json()
-                #     return Response(data, status=status.HTTP_200_OK)
-                BASE_URL = 'http://127.0.0.1:8000/getpostdevicePinStatus/?api_key=06555aba220d6652f121a834d83d6eacab461562'
-                token = "06555aba220d6652f121a834d83d6eacab461562"
+        attempt_num = 1  # keep track of how many times we've retried
+        while attempt_num <= 1:
+            if (var1 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
+                print("xxxxxxx1")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
 
-                headers = {'Authorization': "Bearer {}".format(token)}
-                auth_response = requests.get(BASE_URL, headers)
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var1}
+                print("xxx1")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx1")
+                auth_response.text
+                print(auth_response)
+                break
+            elif (var2 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx2")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
 
-                print("kjhjkj",auth_response.json())
-                
-                attempt_num += 1
-                return HttpResponse("NOT updated")
-            else:
-                attempt_num += 1
-                # You can probably use a logger to log the error here
-                time.sleep(5)  # Wait for 5 seconds before re-trying
-        return Response({"error": "Request failed"}, status=r.status_code)
-    # return render(request, 'scheduling.html')
-        # if day_month_year >= _date and hour_minute_second >= _timing:
-        #     # data2 = pinschedule.objects.filter(d_id=_id)
-        #     # data2.delete()   
-        #     # print(data2)  
-        #     print("got it")    
-        # else:
-        #     print("not matched")
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var2}
+                print("xxx2")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx2")
+                auth_response.text
+                print(auth_response)
+            elif (var3 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx3")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var3}
+                print("xxx3")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx3")
+                auth_response.text
+                print(auth_response)
+            elif (var4 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx4")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var4}
+                print("xxx4")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx4")
+                auth_response.text
+                print(auth_response)
+            elif (var5 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var5}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var6 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var6}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var7 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var7}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var8 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var8}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var9 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var9}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var10 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var10}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var11 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var11}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var12 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var12}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var13 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var13}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var14 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var14}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var15 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var15}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var16 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var16}
+                print("xxx")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx")
+                auth_response.text
+                print(auth_response)
+            elif (var17 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx17")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var17}
+                print("xxx17")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx17")
+                auth_response.text
+                print(auth_response)
+            elif (var18 != None):
+                BASE_URL = 'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id='f"{d_idvar}"
+                print("xxxxxxx18")
+                token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+
+                headers =  {'content-type' : 'application/json', 
+                            'Authorization': "Token {}".format(token)}
+                data = {"put":"yes",'d_id':d_idvar,'pin1Status':var18}
+                print("xxx18")
+                auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
+                print("xxergadfgx18")
+                auth_response.text
+                print(auth_response)
     return render(request,'scheduling.html')
 
 
