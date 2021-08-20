@@ -829,7 +829,7 @@ def scheduleT(request):
                 elif (var2 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx2")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
