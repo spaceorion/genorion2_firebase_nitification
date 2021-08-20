@@ -868,7 +868,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var4}
+                    data = {"put":"yes",'d_id':d_idvar,'pin4Status':var4}
                     print("xxx4")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx4")
@@ -885,7 +885,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var5}
+                    data = {"put":"yes",'d_id':d_idvar,'pin5Status':var5}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -902,7 +902,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var6}
+                    data = {"put":"yes",'d_id':d_idvar,'pin6Status':var6}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -919,7 +919,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var7}
+                    data = {"put":"yes",'d_id':d_idvar,'pin7Status':var7}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -936,7 +936,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var8}
+                    data = {"put":"yes",'d_id':d_idvar,'pin8Status':var8}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -953,7 +953,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var9}
+                    data = {"put":"yes",'d_id':d_idvar,'pin9Status':var9}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -970,7 +970,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var10}
+                    data = {"put":"yes",'d_id':d_idvar,'pin10Status':var10}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -987,7 +987,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var11}
+                    data = {"put":"yes",'d_id':d_idvar,'pin11Status':var11}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -1004,7 +1004,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var12}
+                    data = {"put":"yes",'d_id':d_idvar,'pin12Status':var12}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -1021,7 +1021,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var13}
+                    data = {"put":"yes",'d_id':d_idvar,'pin13Status':var13}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -1038,7 +1038,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var14}
+                    data = {"put":"yes",'d_id':d_idvar,'pin14Status':var14}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -1055,7 +1055,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var15}
+                    data = {"put":"yes",'d_id':d_idvar,'pin15Status':var15}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
@@ -1072,7 +1072,7 @@ def scheduleT(request):
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
-                    data = {"put":"yes",'d_id':d_idvar,'pin1Status':var16}
+                    data = {"put":"yes",'d_id':d_idvar,'pin16Status':var16}
                     print("xxx")
                     auth_response = requests.post(BASE_URL, headers=headers, data=json.dumps(data))
                     print("xxergadfgx")
