@@ -713,52 +713,52 @@ def pinscheduling(request):
             var15 = data['pin15Status']
             var16 = data['pin16Status']
             if (var1 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin1Status=request.GET['pin1Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin1Status=request.GET['pin1Status'])
                 device_data.delete()
             elif (var2 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin2Status=request.GET['pin2Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin2Status=request.GET['pin2Status'])
                 device_data.delete()
             elif (var3 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin3Status=request.GET['pin3Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin3Status=request.GET['pin3Status'])
                 device_data.delete()
             elif (var4 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin4Status=request.GET['pin4Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin4Status=request.GET['pin4Status'])
                 device_data.delete()
             elif (var5 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin5Status=request.GET['pin5Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin5Status=request.GET['pin5Status'])
                 device_data.delete()
             elif (var6 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin6Status=request.GET['pin6Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin6Status=request.GET['pin6Status'])
                 device_data.delete()
             elif (var7 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin7Status=request.GET['pin7Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin7Status=request.GET['pin7Status'])
                 device_data.delete()
             elif (var8 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin8Status=request.GET['pin8Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin8Status=request.GET['pin8Status'])
                 device_data.delete()
             elif (var9 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin9Status=request.GET['pin9Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin9Status=request.GET['pin9Status'])
                 device_data.delete()
             elif (var10 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin10Status=request.GET['pin10Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin10Status=request.GET['pin10Status'])
                 device_data.delete()
             elif (var11 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin11Status=request.GET['pin11Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin11Status=request.GET['pin11Status'])
                 device_data.delete()
             elif (var12 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin12Status=request.GET['pin12Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin12Status=request.GET['pin12Status'])
                 device_data.delete()
             elif (var13 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin13Status=request.GET['pin13Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin13Status=request.GET['pin13Status'])
                 device_data.delete()
             elif (var14 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin14Status=request.GET['pin14Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin14Status=request.GET['pin14Status'])
                 device_data.delete()
             elif (var15 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin15Status=request.GET['pin15Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin15Status=request.GET['pin15Status'])
                 device_data.delete()
             elif (var16 != None):
-                device_data = pinschedule.objects.filter(user = request.GET['user'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin16Status=request.GET['pin16Status'])
+                device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin16Status=request.GET['pin16Status'])
                 device_data.delete()
         return Response("SCHEDULE Deleted.")
 
