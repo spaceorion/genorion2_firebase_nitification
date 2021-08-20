@@ -811,9 +811,9 @@ def scheduleT(request):
                 print("nono2")
                 if (var1 != None):
                     print("nono3")
-                    BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
+                    BASE_URL = f'http://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
                     print("xxxxxxx1")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -827,7 +827,7 @@ def scheduleT(request):
                     data2.delete()
                     print("delete")
                 elif (var2 != None):
-                    BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
+                    BASE_URL = f'http://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx2")
                     token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
@@ -847,7 +847,7 @@ def scheduleT(request):
                 elif (var3 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx3")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -864,7 +864,7 @@ def scheduleT(request):
                 elif (var4 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx4")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -881,7 +881,7 @@ def scheduleT(request):
                 elif (var5 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -898,7 +898,7 @@ def scheduleT(request):
                 elif (var6 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -915,7 +915,7 @@ def scheduleT(request):
                 elif (var7 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -932,7 +932,7 @@ def scheduleT(request):
                 elif (var8 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -949,7 +949,7 @@ def scheduleT(request):
                 elif (var9 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -966,7 +966,7 @@ def scheduleT(request):
                 elif (var10 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -983,7 +983,7 @@ def scheduleT(request):
                 elif (var11 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1000,7 +1000,7 @@ def scheduleT(request):
                 elif (var12 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1017,7 +1017,7 @@ def scheduleT(request):
                 elif (var13 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1034,7 +1034,7 @@ def scheduleT(request):
                 elif (var14 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1051,7 +1051,7 @@ def scheduleT(request):
                 elif (var15 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1068,7 +1068,7 @@ def scheduleT(request):
                 elif (var16 != None):
                     BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx")
-                    token = "fc8a8de66981014125077cadbf12bb12cbfe95fb"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
