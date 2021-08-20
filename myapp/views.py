@@ -760,6 +760,8 @@ def pinscheduling(request):
             elif (var16 != None):
                 device_data = pinschedule.objects.filter(user = request.GET['user'], d_id=request.GET['d_id'], date1=request.GET['date1'], timing1=request.GET['timing1'], pin16Status=request.GET['pin16Status'])
                 device_data.delete()
+            else:
+                return Response("Please Check details. Try Again!!!")
         return Response("SCHEDULE Deleted.")
 
 
