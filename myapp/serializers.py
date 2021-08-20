@@ -109,7 +109,7 @@ class pinscheduleSerializers(serializers.ModelSerializer):
 class pinscheduleTimeSerializers(serializers.ModelSerializer):
     class Meta:
         model = pinschedule
-        fields = ('d_id','date1','timing1')
+        fields = ('id','d_id','date1','timing1')
 
 class emernumberSerializers(serializers.ModelSerializer):
     class Meta:

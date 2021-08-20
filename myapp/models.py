@@ -86,7 +86,7 @@ class deviceStatus(models.Model):
     pin14Status = models.IntegerField(blank=True,null=True)
     pin15Status = models.IntegerField(blank=True,null=True)
     pin16Status = models.IntegerField(blank=True,null=True)
-    pin17Status = models.IntegerField(blank=True,null=True)
+    pin17Status = models.BigIntegerField(blank=True,null=True)
     pin18Status = models.IntegerField(blank=True,null=True)
     pin19Status = models.CharField(blank=True,null=True,max_length=100)
     pin20Status = models.CharField(blank=True,null=True,max_length=100)
@@ -148,6 +148,7 @@ class pinName(models.Model):
 
 
 class pinschedule(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     d_id = models.ForeignKey(allDevices, on_delete=models.CASCADE)
     date1 = models.DateField(default="2000-01-01",null=True)
     timing1 = models.TimeField(default='00:00')
@@ -167,7 +168,7 @@ class pinschedule(models.Model):
     pin14Status = models.IntegerField(blank=True,null=True)
     pin15Status = models.IntegerField(blank=True,null=True)
     pin16Status = models.IntegerField(blank=True,null=True)
-    pin17Status = models.IntegerField(blank=True,null=True)
+    pin17Status = models.BigIntegerField(blank=True,null=True)
     pin18Status = models.IntegerField(blank=True,null=True)
     pin19Status = models.CharField(blank=True,null=True,max_length=100)
     pin20Status = models.CharField(blank=True,null=True,max_length=100)
