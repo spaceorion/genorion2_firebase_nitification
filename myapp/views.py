@@ -811,7 +811,7 @@ def scheduleT(request):
                 print("nono2")
                 if (var1 != None):
                     print("nono3")
-                    BASE_URL = f'http://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
+                    BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
                     print("xxxxxxx1")
                     token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
@@ -827,7 +827,7 @@ def scheduleT(request):
                     data2.delete()
                     print("delete")
                 elif (var2 != None):
-                    BASE_URL = f'http://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'
+                    BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                     print("xxxxxxx2")
                     token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
