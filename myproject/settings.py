@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'crispy_forms',
     'django_cleanup',
+    'background_task',
     # 'organizations',
     # 'phone_login',
 ]

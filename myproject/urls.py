@@ -48,6 +48,7 @@ urlpatterns = [
     path('addyourdevice/', myapp_view.deviceList),
     path('schedulingpinsalltheway/',myapp_view.pinscheduling),
     path('schedulepinstime/', myapp_view.scheduleT),
+    path('scheduledatagetbyid/', myapp_view.pinschedulingdevice),
     
 
     path('getallplaces/', myapp_view.placegetList),

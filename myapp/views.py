@@ -59,6 +59,7 @@ from myapp.utils import get_variable
 from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
 import time
+from background_task import background
 
 
 conn = http.client.HTTPConnection("2factor.in")
@@ -662,6 +663,14 @@ def devicePinNames(request):
 
         ################# pin time Scheduling   #######################
 
+@api_view(["GET"])
+def pinschedulingdevice(request):
+    if request.method == "GET":
+        device_data = pinschedule.objects.filter(d_id=request.GET['d_id'])
+        schJson = pinscheduleSerializers(device_data, many=True)
+        return Response(schJson.data)
+
+
 @api_view(["GET","POST","PUT","DELETE"])
 def pinscheduling(request):
     if request.method == "GET":
@@ -762,9 +771,10 @@ def pinscheduling(request):
                 device_data.delete()
             else:
                 return Response("Please Check details. Try Again!!!")
+        
         return Response("SCHEDULE Deleted.")
 
-
+@background(schedule=1)
 def scheduleT(request):
     now = datetime.now()
     year = '{:02d}'.format(now.year)
@@ -813,9 +823,9 @@ def scheduleT(request):
                 print("nono2")
                 if (var1 != None):
                     print("nono3")
-                    BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
+                    BASE_URL = f'https://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
                     print("xxxxxxx1")
-                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                    token = "fda86e99bbb9b675da1b54be9ad59e5a13576c0c"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1087,6 +1097,9 @@ def scheduleT(request):
         else:
             print("not matched")
     return render(request,'scheduling.html')
+
+# new_year = datetime(2022, 7, 23)
+# scheduleT(1, repeat=2,repeat_until=new_year)#some_id, 
 
 
 
