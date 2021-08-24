@@ -59,7 +59,7 @@ from myapp.utils import get_variable
 from django.contrib.auth.views import PasswordChangeView
 from django.core.mail import send_mail
 import time
-from background_task import background
+# from background_task import background
 
 
 conn = http.client.HTTPConnection("2factor.in")
