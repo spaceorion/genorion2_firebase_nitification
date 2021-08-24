@@ -774,7 +774,7 @@ def pinscheduling(request):
         
         return Response("SCHEDULE Deleted.")
 
-@background(schedule=1)
+# @background(schedule=1)
 def scheduleT(request):
     now = datetime.now()
     year = '{:02d}'.format(now.year)
