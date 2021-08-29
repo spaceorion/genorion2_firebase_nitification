@@ -47,7 +47,7 @@ class placeSerializers(serializers.ModelSerializer):
 class placenameSerializers(serializers.ModelSerializer):
     class Meta:
         model = place
-        fields = ('p_type',)
+        fields = ('p_type','p_id')
 
 
 class floorSerializers(serializers.ModelSerializer):
@@ -59,7 +59,7 @@ class floorSerializers(serializers.ModelSerializer):
 class floornameSerializers(serializers.ModelSerializer):
     class Meta:
         model = floor
-        fields = ('f_name',)
+        fields = ('f_name','f_id')
 
 class flatSerializers(serializers.ModelSerializer):
     class Meta:
@@ -70,7 +70,7 @@ class flatSerializers(serializers.ModelSerializer):
 class flatnameSerializers(serializers.ModelSerializer):
     class Meta:
         model = flat
-        fields = ('flt_name',)
+        fields = ('flt_name','flt_id')
 
 
 class roomSerializers(serializers.ModelSerializer):
@@ -81,7 +81,7 @@ class roomSerializers(serializers.ModelSerializer):
 class roomnameSerializers(serializers.ModelSerializer):
     class Meta:
         model = room
-        fields = ('r_name',)
+        fields = ('r_name','r_id')
 
 
 class deviceSerializers(serializers.ModelSerializer):

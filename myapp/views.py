@@ -1431,9 +1431,9 @@ def placenamelist(request):
         device_data = place.objects.filter(p_id=request.GET['p_id'])
         nameJson = placenameSerializers(device_data, many=True)
         # return Response(nameJson.data)
-        dd = list(nameJson.data)[0]["p_type"]
-        print(dd)
-        return Response(dd)
+        # dd = list(nameJson.data)[0]["p_type"]
+        # print(dd)
+        return Response(nameJson.data)
 
 ##### floor  #######
 
@@ -1443,9 +1443,9 @@ def floornamelist(request):
         device_data = floor.objects.filter(f_id=request.GET['f_id'])
         nameJson = floornameSerializers(device_data, many=True)
         # return Response(nameJson.data)
-        dd = list(nameJson.data)[0]["f_name"]
-        print(dd)
-        return Response(dd)
+        # dd = list(nameJson.data)[0]["f_name"]
+        # print(dd)
+        return Response(nameJson.data)
 
 ##### flat  #######
 
@@ -1455,9 +1455,9 @@ def flatnamelist(request):
         device_data = flat.objects.filter(flt_id=request.GET['flt_id'])
         nameJson = flatnameSerializers(device_data, many=True)
         # return Response(nameJson.data)
-        dd = list(nameJson.data)[0]["flt_name"]
-        print(dd)
-        return Response(dd)
+        # dd = list(nameJson.data)[0]["flt_name"]
+        # print(dd)
+        return Response(nameJson.data)
 
 
 ##### room  #######
@@ -1468,9 +1468,9 @@ def roomnamelist(request):
         device_data = room.objects.filter(r_id=request.GET['r_id'])
         nameJson = roomnameSerializers(device_data, many=True)
         # return Response(nameJson.data)
-        dd = list(nameJson.data)[0]["r_name"]
-        print(dd)
-        return Response(dd)
+        # dd = list(nameJson.data)[0]["r_name"]
+        # print(dd)
+        return Response(nameJson.data)
 
 ################  User can get all data added by him  ####################
 @api_view(["GET"])
