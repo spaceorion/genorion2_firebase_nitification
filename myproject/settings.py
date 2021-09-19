@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     # 'phone_login',
     # 'django_cron',
     'django_celery_beat',
-    'django_celery_results',
+    # 'django_celery_results',
     'corsheaders',
     # 'django_celery',
 ]
