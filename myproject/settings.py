@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     # 'background_task',
     # 'organizations',
     # 'phone_login',
-    'django_cron',
+    # 'django_cron',
     'django_celery_beat',
     'django_celery_results',
     'corsheaders',

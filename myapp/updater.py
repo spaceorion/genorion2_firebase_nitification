@@ -75,9 +75,9 @@ def ready():
                     print("nono2")
                     if (var1 != None):
                         print("nono3")
-                        BASE_URL = f'https://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
+                        BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
                         print("xxxxxxx1")
-                        token = "e8234b05f80c77a95bffe936618a4c59c7a1ed33"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -93,7 +93,7 @@ def ready():
                     elif (var2 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx2")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -111,7 +111,7 @@ def ready():
                     elif (var3 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx3")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -128,7 +128,7 @@ def ready():
                     elif (var4 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx4")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -145,7 +145,7 @@ def ready():
                     elif (var5 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -162,7 +162,7 @@ def ready():
                     elif (var6 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -179,7 +179,7 @@ def ready():
                     elif (var7 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -196,7 +196,7 @@ def ready():
                     elif (var8 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -213,7 +213,7 @@ def ready():
                     elif (var9 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -230,7 +230,7 @@ def ready():
                     elif (var10 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -247,7 +247,7 @@ def ready():
                     elif (var11 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -264,7 +264,7 @@ def ready():
                     elif (var12 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -281,7 +281,7 @@ def ready():
                     elif (var13 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -298,7 +298,7 @@ def ready():
                     elif (var14 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -315,7 +315,7 @@ def ready():
                     elif (var15 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
@@ -332,7 +332,7 @@ def ready():
                     elif (var16 != None):
                         BASE_URL = f'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id={d_idvar}'
                         print("xxxxxxx")
-                        token = "774945db6cd2eec12fe92227ab9b811c888227c6"
+                        token = "583900047e4802c4bef91d02e13e79438a5af86e"
 
                         headers =  {'content-type' : 'application/json', 
                                     'Authorization': "Token {}".format(token)}
