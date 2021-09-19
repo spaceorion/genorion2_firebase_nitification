@@ -1,7 +1,10 @@
+from __future__ import absolute_import, unicode_literals
+from celery import shared_task
 # import pandas as pd
 import smtplib
 
 from django.http import response
+from requests.api import request
 from myapp.models import userimages
 from myapp.models import ssidPassword
 from django.contrib.auth.views import PasswordChangeView
@@ -36,7 +39,8 @@ from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.contrib.auth.models import User
 from rest_framework.decorators import authentication_classes
 from rest_framework.response import Response
-from myapp.serializers import testimageSerializers,userSerializers,placeSerializers,floorSerializers,flatSerializers,roomSerializers,deviceSerializers,pinscheduleSerializers,pinscheduleTimeSerializers,deviceStatusSerializers,emernumberSerializers,sensorSerializers,ssidPasswordSerializers,pinnamesSerializers,userprofileimagesSerializers,deviceipaddressSerializers,subuseraccessSerializers,emailSerializers,subuseremailSerializers,subuserplaceSerializers,subuserplacegetSerializers,tempuserregisterSerializers,placenameSerializers,floornameSerializers,roomnameSerializers,otpfortampuserSerializers,otpuserloginSerializers,firstnameSerializers,flatSerializers,userlogingetdataSerializers,flatnameSerializers,dateasignSerializers,timeasignSerializers
+# from myapp.serializers import testimageSerializers,userSerializers,placeSerializers,floorSerializers,flatSerializers,roomSerializers,deviceSerializers,pinscheduleSerializers,pinscheduleTimeSerializers,deviceStatusSerializers,emernumberSerializers,sensorSerializers,ssidPasswordSerializers,pinnamesSerializers,userprofileimagesSerializers,deviceipaddressSerializers,subuseraccessSerializers,emailSerializers,subuseremailSerializers,subuserplaceSerializers,subuserplacegetSerializers,tempuserregisterSerializers,placenameSerializers,floornameSerializers,roomnameSerializers,otpfortampuserSerializers,otpuserloginSerializers,firstnameSerializers,flatSerializers,userlogingetdataSerializers,flatnameSerializers,dateasignSerializers,timeasignSerializers, energySerializers, onehourenSerializers
+from myapp.serializers import *
 from rest_framework.authtoken.models import Token
 from rest_framework.filters import SearchFilter,OrderingFilter
 from rest_framework import serializers
@@ -626,7 +630,7 @@ def webhook(request):
 
 
 
-                                            ##################### Device Pin Names ####################
+                                            ######+en20+en30+############### Device Pin Names ####################
 
 
 
@@ -778,8 +782,11 @@ def pinscheduling(request):
         
         return Response("SCHEDULE Deleted.")
 
-# @background(schedule=1)
-def scheduleT(request):
+# @background(schedule=5)
+# @shared_task
+x = request
+def scheduleT(x):
+    print("going")
     now = datetime.now()
     year = '{:02d}'.format(now.year)
     month = '{:02d}'.format(now.month)
@@ -829,7 +836,7 @@ def scheduleT(request):
                     print("nono3")
                     BASE_URL = f'https://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
                     print("xxxxxxx1")
-                    token = "fda86e99bbb9b675da1b54be9ad59e5a13576c0c"
+                    token = "e8234b05f80c77a95bffe936618a4c59c7a1ed33"
 
                     headers =  {'content-type' : 'application/json', 
                                 'Authorization': "Token {}".format(token)}
@@ -1100,8 +1107,12 @@ def scheduleT(request):
                     print("delete")
         else:
             print("not matched")
-    return render(request,'scheduling.html')
+    return render(x,'scheduling.html')
 
+# def backg_view(request):
+#     while True:
+#         scheduleT(repeat = 3)
+#         return HttpResponse("running")
 # new_year = datetime(2022, 7, 23)
 # scheduleT(1, repeat=2,repeat_until=new_year)#some_id, 
 
@@ -1174,10 +1185,429 @@ def ssidList(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
+          ############### Bill pridiction API  ####################
 
-                                    ############################ Profile photo  ###########################
 
-                                    ###################### BASE 64 string ###################
+oneHenergy = None
+@api_view(["GET","POST","PUT"])
+def enerzyList(request):
+    if request.method == "GET":
+        device_data = energy.objects.filter(d_id=request.GET['d_id'])
+        enrJson = energySerializers(device_data, many=True)
+        dd = enrJson.data[:]
+        return Response(dd[0])
+    elif request.method == "POST":
+        received_json_data=json.loads(request.body)
+        if received_json_data['put']!='yes':
+            serializer = energySerializers(data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                return Response("data created", status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+        else:
+            device_id=received_json_data['d_id']
+            print('123')
+            try:
+                print('qwe')
+                device_object=energy.objects.get(d_id=device_id)
+            except device_object.DoesNotExist:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+            serializer = energySerializers(device_object, data=request.data)
+            # en60 = request.data['enrgy60']
+            xxyy = ''
+            print(device_id)
+            if energy.objects.filter(d_id=device_id, enrgy60=xxyy).exists():
+                if serializer.is_valid():
+                    serializer.save()
+                    return Response("data updated", status=status.HTTP_201_CREATED)
+            else:
+                en10 = request.data['enrgy10']
+                en20 = request.data['enrgy20']
+                en30 = request.data['enrgy30']
+                en40 = request.data['enrgy40']
+                en50 = request.data['enrgy50']
+                en60 = request.data['enrgy60']
+                d_id = request.data['d_id']
+                print(d_id)
+                print(type(en10))
+                def toFloat(x):
+                    try:
+                        return float(x)
+                    except:
+                        return 0
+                global oneHenergy
+                oneHenergy = toFloat(en10) + toFloat(en20) + toFloat(en30) + toFloat(en40) + toFloat(en50) + toFloat(en60)
+                print(oneHenergy)
+                if oneHourEnergy.objects.filter(d_id=d_id).exists():
+                    print("pass")
+                    pass
+                else:
+                    hener = oneHourEnergy.objects.create(d_id=d_id);
+                    hener.save();
+                    print("hello")
+                if oneHourEnergy.objects.filter(d_id=d_id, hour1=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour1 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("1st hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour2=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour2 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("2nd hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour3=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour3 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("3rd hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour4=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour4 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("4th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour5=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour5 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("5th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour6=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour6 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("6th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour7=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour7 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("7th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour8=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour8 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("8th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour9=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour9 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("9th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour10=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour10 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("10th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour11=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour11 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("11th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour12=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour12 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("12th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour13=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour13 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("13th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour14=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour14 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("14th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour15=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour15 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("15th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour16=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour16 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("16th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour17=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour17 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("17th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour18=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour18 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("18th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour19=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour19 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("19th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour20=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour20 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("20th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour21=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour21 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("21st hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour22=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour22 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("22nd hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour23=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour23 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    return Response("23rd hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+                elif oneHourEnergy.objects.filter(d_id=d_id, hour24=0).exists():
+                    print("I am in.")
+                    t = oneHourEnergy.objects.get(d_id=d_id)
+                    t.hour24 = oneHenergy
+                    t.save()
+                    # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                    data1 = energy.objects.filter(d_id=request.GET['d_id'])
+                    data1.delete()
+                    
+                    h1data = oneHourEnergy.objects.filter(d_id=d_id)
+                    subJson1 = onehourenSerializers(h1data, many=True)
+                    xc = list(subJson1.data)[-1]["hour1"]
+                    xc2 = list(subJson1.data)[-1]["hour2"]
+                    xc3 = list(subJson1.data)[-1]["hour3"]
+                    xc4 = list(subJson1.data)[-1]["hour4"]
+                    xc5 = list(subJson1.data)[-1]["hour5"]
+                    xc6 = list(subJson1.data)[-1]["hour6"]
+                    xc7 = list(subJson1.data)[-1]["hour7"]
+                    xc8 = list(subJson1.data)[-1]["hour8"]
+                    xc9 = list(subJson1.data)[-1]["hour9"]
+                    xc10 = list(subJson1.data)[-1]["hour10"]
+                    xc11 = list(subJson1.data)[-1]["hour11"]
+                    xc12 = list(subJson1.data)[-1]["hour11"]
+                    xc13 = list(subJson1.data)[-1]["hour13"]
+                    xc14 = list(subJson1.data)[-1]["hour14"]
+                    xc15 = list(subJson1.data)[-1]["hour15"]
+                    xc16 = list(subJson1.data)[-1]["hour16"]
+                    xc17 = list(subJson1.data)[-1]["hour17"]
+                    xc18 = list(subJson1.data)[-1]["hour18"]
+                    xc19 = list(subJson1.data)[-1]["hour19"]
+                    xc20 = list(subJson1.data)[-1]["hour20"]
+                    xc21 = list(subJson1.data)[-1]["hour21"]
+                    xc22 = list(subJson1.data)[-1]["hour22"]
+                    xc23 = list(subJson1.data)[-1]["hour23"]
+                    xc24 = list(subJson1.data)[-1]["hour24"]
+                    
+                    def toFloat(x):
+                        try:
+                            return float(x)
+                        except:
+                            return 0
+
+                    xcall = toFloat(xc) + toFloat(xc2) + toFloat(xc3) + toFloat(xc4) + toFloat(xc5) + toFloat(xc6) + toFloat(xc7) + toFloat(xc8) + toFloat(xc9) + toFloat(xc10) + toFloat(xc11) + toFloat(xc12) + toFloat(xc13) + toFloat(xc14) + toFloat(xc15) + toFloat(xc16) + toFloat(xc17) + toFloat(xc18) + toFloat(xc19) + toFloat(xc20) + toFloat(xc21) + toFloat(xc22) + toFloat(xc23) + toFloat(xc24)
+                    print("one day Energy: ", xcall)
+
+                    if oneyeardata.objects.filter(d_id=d_id).exists():
+                        print("pass")
+                        pass
+                    else:
+                        hener = oneyeardata.objects.create(d_id=d_id);
+                        hener.save();
+                        print("hello")
+                    for i in range(1, 365+1):
+                        if oneyeardata.objects.filter(d_id=d_id, **{f'day{i}': ''}).exists():
+                            print("I am in.", i)
+                            t = oneyeardata.objects.get(d_id=d_id)
+                            setattr(t, f'day{i}', xcall)
+                            t.save()
+                            # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                            data1 = oneHourEnergy.objects.filter(d_id=request.GET['d_id'])
+                            data1.delete()
+                            return Response(f"day {i} Energy is: "+str(xcall), status=status.HTTP_201_CREATED)
+                    if oneyeardata.objects.filter(d_id=d_id, **{f'day366': ''}).exists():
+                        print("I am in.", i)
+                        t = oneyeardata.objects.get(d_id=d_id)
+                        setattr(t, f'day366', xcall)
+                        t.save()
+                        # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                        data1 = oneHourEnergy.objects.filter(d_id=request.GET['d_id'])
+                        data1.delete()
+                        result = 0
+                        for i in range(1, 366+1):
+                            h1data = oneyeardata.objects.filter(d_id=d_id)
+                            subJson1 = oneyearenSerializers(h1data, many=True)
+                            xc = list(subJson1.data)[-1][f"day{i}"]
+                            result += toFloat(xc)
+                        print("one year energy", result)
+                        if threeyears.objects.filter(d_id=d_id).exists():
+                            print("pass")
+                            pass
+                        else:
+                            hener = threeyears.objects.create(d_id=d_id);
+                            hener.save();
+                            print("hello")
+                        if threeyears.objects.filter(d_id=d_id, year1='').exists():
+                            print("I am in.")
+                            t = threeyears.objects.get(d_id=d_id)
+                            t.year1 = result
+                            t.save()
+                            # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                            data1 = oneyeardata.objects.filter(d_id=request.GET['d_id'])
+                            data1.delete()
+                            return Response("1st Year Energy is: "+str(result), status=status.HTTP_201_CREATED)
+                        elif threeyears.objects.filter(d_id=d_id, year2='').exists():
+                            print("I am in.")
+                            t = threeyears.objects.get(d_id=d_id)
+                            t.year2 = result
+                            t.save()
+                            # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                            data1 = oneyeardata.objects.filter(d_id=request.GET['d_id'])
+                            data1.delete()
+                            return Response("2nd Year Energy is: "+str(result), status=status.HTTP_201_CREATED)
+                        elif threeyears.objects.filter(d_id=d_id, year3='').exists():
+                            print("I am in.")
+                            t = threeyears.objects.get(d_id=d_id)
+                            t.year3 = result
+                            t.save()
+                            # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
+                            data1 = oneyeardata.objects.filter(d_id=request.GET['d_id'])
+                            data1.delete()
+                            return Response("3rd Year Energy is: "+str(result), status=status.HTTP_201_CREATED)
+                        else:
+                            return Response("not filled successfully", status=status.HTTP_100_CONTINUE)
+                return Response("24th hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+                                    
+@api_view(["GET"])
+def pertenminute(request):
+    if request.method == "GET":
+        device_data = energy.objects.filter(d_id=request.GET['d_id'])
+        enJson = energySerializers(device_data, many=True)
+        # dd = roomJson.data[:]
+        return Response(enJson.data)
+
+@api_view(["GET"])
+def perhour(request):
+    if request.method == "GET":
+        device_data = oneHourEnergy.objects.filter(d_id=request.GET['d_id'])
+        enJson = onehourenSerializers(device_data, many=True)
+        # dd = roomJson.data[:]
+        return Response(enJson.data)
+
+@api_view(["GET"])
+def perday(request):
+    if request.method == "GET":
+        device_data = oneyeardata.objects.filter(d_id=request.GET['d_id'])
+        enJson = oneyearenSerializers(device_data, many=True)
+        # dd = roomJson.data[:]
+        return Response(enJson.data)
+
+@api_view(["GET"])
+def peryear(request):
+    if request.method == "GET":
+        device_data = threeyears.objects.filter(d_id=request.GET['d_id'])
+        enJson = threeyearenSerializers(device_data, many=True)
+        # dd = roomJson.data[:]
+        return Response(enJson.data)
+
+
+
+
+            ############################ Profile photo  ###########################
+
+                     ################### BASE 64 string ###################
 
                                     
 @api_view(["GET","POST","PUT","DELETE"])

@@ -26,6 +26,10 @@ admin.site.register(tempUserVerification)
 admin.site.register(otptemplogin)
 admin.site.register(pinschedule)
 admin.site.register(SomeModel)
+admin.site.register(energy)
+admin.site.register(oneHourEnergy)
+admin.site.register(oneyeardata)
+admin.site.register(threeyears)
 
 # admin.site.register(Profile)
 

@@ -27,7 +27,7 @@ SECRET_KEY = 'n&de6$-$c0*p^0fznh=h!xx2gd-=2_)s*^t__!!@h03l#$-syy'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.105']
+# ALLOWED_HOSTS = [*]
 
 
 # Application definition
@@ -40,15 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'embed_video',
+    # 'embed_video',
     'rest_framework',
     'reset_migrations',
     'rest_framework.authtoken',
-    'crispy_forms',
-    'django_cleanup',
+    # 'crispy_forms',
+    # 'django_cleanup',
     # 'background_task',
     # 'organizations',
     # 'phone_login',
+    'django_cron',
+    'django_celery_beat',
+    'django_celery_results',
+    'corsheaders',
+    # 'django_celery',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -69,9 +74,22 @@ REST_FRAMEWORK = {
 #     # 'django.contrib.auth.backends.ModelBackend',
 # ]
 
+
+from celery import Celery
+
+celery = Celery(broker="amqp://guest:guest@127.0.0.1:5672//")
+
+celery.conf.update(
+    CELERY_DEFAULT_QUEUE = "myapp",
+    CELERY_DEFAULT_EXCHANGE = "myapp",
+    CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
+    CELERY_DEFAULT_ROUTING_KEY = "myapp",
+)
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -109,7 +127,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'genorion',
         'USER': 'postgres',
-        'PASSWORD': '8958096552',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
     }
 }

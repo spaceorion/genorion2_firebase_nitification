@@ -21,6 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from rest_framework.urlpatterns import format_suffix_patterns
 from myapp import views
 from myapp import views as myapp_view
+from myapp.views import enerzyList, pertenminute, scheduleT
 from django.contrib.auth import views as auth
 from .router import router
 from rest_framework.authtoken import views
@@ -98,6 +99,15 @@ urlpatterns = [
     path('tempuserloginwithotp/', myapp_view.tempulogin),
     path('tempuserautodelete/', myapp_view.tempuserautodelete),
 
+    ###### Bill pridiction #############3
+
+    path('energyconsume/', myapp_view.enerzyList),
+    path('pertenminuteenergy/',myapp_view.pertenminute),
+    path('perhourenergy/',myapp_view.perhour),
+    path('perdaysenergy/',myapp_view.perday),
+    path('peryearenergy/',myapp_view.peryear),
+
+
 
 
     # path('testkrlo/', myapp_view.my_django_view)
@@ -111,4 +121,6 @@ urlpatterns = [
 ]
 urlpatterns +=staticfiles_urlpatterns()
 urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# scheduleT(repeat=3,repeat_until=None)
 
