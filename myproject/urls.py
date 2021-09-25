@@ -48,7 +48,6 @@ urlpatterns = [
     path('addroom/', myapp_view.roomList),
     path('addyourdevice/', myapp_view.deviceList),
     path('schedulingpinsalltheway/',myapp_view.pinscheduling),
-    path('schedulepinstime/', myapp_view.scheduleT),
     path('scheduledatagetbyid/', myapp_view.pinschedulingdevice),
     
 
@@ -66,9 +65,9 @@ urlpatterns = [
     
     path('getpostdevicePinStatus/', myapp_view.devicePinStatus),
     path('webhookapi/', myapp_view.webhook),
-    path('getpostemergencynumber/', myapp_view.emerNumber),
+    # path('getpostemergencynumber/', myapp_view.emerNumber),
     path('tensensorsdata/', myapp_view.sensorsList),
-    path('ssidpassword/', myapp_view.ssidList),
+    # path('ssidpassword/', myapp_view.ssidList),
     path('editpinnames/', myapp_view.devicePinNames),
     path('addprofileimage/', myapp_view.profoto),
     path('addipaddress/', myapp_view.ipaddressList),

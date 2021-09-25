@@ -784,8 +784,8 @@ def pinscheduling(request):
 
 # @background(schedule=5)
 # @shared_task
-x = request
-def scheduleT(x):
+# x = request
+def scheduleT(request):
     print("going")
     now = datetime.now()
     year = '{:02d}'.format(now.year)
@@ -836,9 +836,9 @@ def scheduleT(x):
                     print("nono3")
                     BASE_URL = f'https://127.0.0.1:8000/getpostdevicePinStatus/?d_id={d_idvar}'#'https://genorion1.herokuapp.com/getpostdevicePinStatus/?d_id=DIDM12932021AAAAAA'
                     print("xxxxxxx1")
-                    token = "e8234b05f80c77a95bffe936618a4c59c7a1ed33"
+                    token = "774945db6cd2eec12fe92227ab9b811c888227c6"
 
-                    headers =  {'content-type' : 'application/json', 
+                    headers =  {'content-type' : 'application/json',
                                 'Authorization': "Token {}".format(token)}
                     data = {"put":"yes",'d_id':d_idvar,'pin1Status':var1}
                     print("xxx1")
@@ -1107,7 +1107,7 @@ def scheduleT(x):
                     print("delete")
         else:
             print("not matched")
-    return render(x,'scheduling.html')
+    return render(request,'scheduling.html')
 
 # def backg_view(request):
 #     while True:

@@ -19,7 +19,7 @@ class MyappConfig(AppConfig):
 
 # time.sleep(5)
 
-    def ready(self):
-        from myapp import updater
-        updater.start()
+    # def ready(self):
+    #     from myapp import updater
+    #     updater.start()
     

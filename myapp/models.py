@@ -17,6 +17,11 @@ from twilio.rest import Client, TwilioIpMessagingClient
 from myapp.utils import create_new_ref_number, dt, otplogin, defprofoto
 from datetime import date
 # User._meta.get_field('email')._unique = True
+from django.core.management.base import BaseCommand, CommandError
+# from cus_leads.models import CustomerLeads 
+from datetime import datetime, timedelta
+
+    
 
 
 device_categories = (
@@ -173,6 +178,15 @@ class pinschedule(models.Model):
     pin18Status = models.IntegerField(blank=True,null=True)
     pin19Status = models.CharField(blank=True,null=True,max_length=100)
     pin20Status = models.CharField(blank=True,null=True,max_length=100)
+
+
+    # def handle(self, *args, **options):
+    #     today = date.today()
+    #     now = datetime.now()
+    #     d1 = today.strftime("%Y-%m-%d")
+    #     d2 = now.strftime("%H:%M")
+    #     pinschedule.objects.filter(date1=d1,timing1=d2).delete()
+    #     self.stdout.write('Deleted objects in time')
    
 
 class userimages(models.Model):

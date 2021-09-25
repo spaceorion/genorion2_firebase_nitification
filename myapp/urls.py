@@ -44,8 +44,8 @@ urlpatterns = [
     path('change_password_phone/', views.change_passwo, name='change_password'),
     path('flutter_change_password_login', views.flutter_change_password_login, name='flutter_change_password_login'),
     path('change_password_flu/', views.change_pass, name='change_password'),
+    path('schedulepinstimes/', views.scheduleT, name='scheduling'),
 
-    
 
 
 ]

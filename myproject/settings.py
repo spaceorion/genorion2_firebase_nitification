@@ -50,10 +50,11 @@ INSTALLED_APPS = [
     # 'organizations',
     # 'phone_login',
     # 'django_cron',
-    'django_celery_beat',
+    # 'django_celery_beat',
     # 'django_celery_results',
     'corsheaders',
     # 'django_celery',
+    'django_crontab',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -65,6 +66,10 @@ REST_FRAMEWORK = {
     ],
 }
 
+CRONJOBS = [
+    ('*/1 * * * *', 'myapp.cron.pinschedule')
+]
+
 # 'DEFAULT_PERMISSION_CLASSES': [
 #    'rest_framework.permissions.AllowAny',
 # ]
@@ -75,16 +80,16 @@ REST_FRAMEWORK = {
 # ]
 
 
-from celery import Celery
+# from celery import Celery
 
-celery = Celery(broker="amqp://guest:guest@127.0.0.1:5672//")
+# celery = Celery(broker="amqp://guest:guest@127.0.0.1:5672//")
 
-celery.conf.update(
-    CELERY_DEFAULT_QUEUE = "myapp",
-    CELERY_DEFAULT_EXCHANGE = "myapp",
-    CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
-    CELERY_DEFAULT_ROUTING_KEY = "myapp",
-)
+# celery.conf.update(
+#     CELERY_DEFAULT_QUEUE = "myapp",
+#     CELERY_DEFAULT_EXCHANGE = "myapp",
+#     CELERY_DEFAULT_EXCHANGE_TYPE = "direct",
+#     CELERY_DEFAULT_ROUTING_KEY = "myapp",
+# )
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
