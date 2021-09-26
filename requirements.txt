@@ -79,8 +79,6 @@ pyasn1-modules==0.2.8
 pycairo==1.16.2
 pycparser==2.20
 pycups==1.9.73
-PyGObject==3.36.0
-PyHamcrest==2.0.2
 pyinstaller==4.5.1
 pyinstaller-hooks-contrib==2021.3
 PyJWT==1.7.1
