@@ -73,11 +73,6 @@ proglog==0.1.9
 protobuf==3.6.1
 psycopg2==2.8.6
 py==1.10.0
-pyasn1==0.4.8
-pyasn1-modules==0.2.8
-pycairo==1.16.2
-pycparser==2.20
-pycups==1.9.73
 pyinstaller==4.5.1
 pyinstaller-hooks-contrib==2021.3
 PyJWT==1.7.1
