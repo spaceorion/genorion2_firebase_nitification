@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     # 'organizations',
     # 'phone_login',
     # 'django_cron',
-    # 'django_celery_beat',
-    # 'django_celery_results',
+    'django_celery_beat',
+    'django_celery_results',
     'corsheaders',
     # 'django_celery',
     # 'django_crontab',
@@ -80,7 +80,17 @@ CRONJOBS = [
 # ]
 
 
-# from celery import Celery
+from celery import Celery
+
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 
 # celery = Celery(broker="amqp://guest:guest@127.0.0.1:5672//")
 
