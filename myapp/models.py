@@ -286,7 +286,7 @@ class oneHourEnergy(models.Model):
     hour24 = models.CharField(default=0, blank=True, max_length=10)
 
 class oneyeardata(models.Model):
-    d_id = models.FloatField(max_length=50, primary_key=True)
+    d_id = models.CharField(max_length=50, primary_key=True)
     day1 = models.FloatField(max_length=20, blank=True)
     day2 = models.FloatField(max_length=20, blank=True)
     day3 = models.FloatField(max_length=20, blank=True)
