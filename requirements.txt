@@ -3,7 +3,6 @@ altgraph==0.17
 amqp==2.5.2
 anyjson==0.3.3
 APScheduler==3.7.0
-apturl==0.5.2
 asgiref==3.2.10
 async-timeout==3.0.1
 attrs==20.2.0
