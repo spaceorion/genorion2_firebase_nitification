@@ -1,6 +1,9 @@
 import os
 
 from celery import Celery
+import webbrowser
+from time import sleep
+
 
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myproject.settings')
@@ -24,7 +27,12 @@ def debug_task(self):
 
 @app.task(bind=True)
 def mytk(self):
-    print("HELLO Pankaj from 2nd channel!!!!!!")
+    url = 'http://127.0.0.1:8000/schedulepinstimes/'
+
+    while True:
+        print("refreshing...")
+        webbrowser.open(url, new=0)
+        sleep(25)
 
 @app.task(bind=True)
 def debug_task(self):

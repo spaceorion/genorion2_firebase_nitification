@@ -251,12 +251,14 @@ class otptemplogin(models.Model):
 
 class energy(models.Model):
     d_id = models.OneToOneField(allDevices, on_delete=models.CASCADE,primary_key=True)
-    enrgy10 = models.CharField(max_length=50, blank=True)
-    enrgy20 = models.CharField(max_length=50, blank=True)
-    enrgy30 = models.CharField(max_length=50, blank=True)
-    enrgy40 = models.CharField(max_length=50, blank=True)
-    enrgy50 = models.CharField(max_length=50, blank=True)
-    enrgy60 = models.CharField(max_length=50, blank=True)
+    # datee = models.DateField(default="2000-01-01",null=True)
+    # timinge = models.TimeField(default='00:00')
+    enrgy10 = models.CharField(max_length=50, blank=True, null=True, default=0)
+    enrgy20 = models.CharField(max_length=50, blank=True, null=True, default=0)
+    enrgy30 = models.CharField(max_length=50, blank=True, null=True, default=0)
+    enrgy40 = models.CharField(max_length=50, blank=True, null=True, default=0)
+    enrgy50 = models.CharField(max_length=50, blank=True, null=True, default=0)
+    enrgy60 = models.CharField(max_length=50, blank=True, null=True, default=0)
 
 class oneHourEnergy(models.Model):
     d_id = models.CharField(max_length=50, primary_key=True)

@@ -109,6 +109,8 @@ urlpatterns = [
 
 
 
+
+
     # path('testkrlo/', myapp_view.my_django_view)
 
     path('testimages123/', myapp_view.testimages123),
