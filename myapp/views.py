@@ -1218,7 +1218,7 @@ def enerzyList(request):
             # for no in serializer:
             #     eno60 = no['enrgy60']
             # print("60th",eno60)
-            eno60 = request.data['enrgy60']
+            eno10 = request.data['enrgy10']
             # print(eno60, "yahi wala hai kya?")
             # xxyy = ''
             print(device_id)
@@ -1242,27 +1242,23 @@ def enerzyList(request):
 
 # update now
 
-                    print("i am the updater", en20)
                     t1 = energy.objects.get(d_id=d_id)
-                    t1.enrgy10 = en20
-                    print(t1.enrgy10)
+                    t1.enrgy60 = en50
                     t1.save()
                     t2 = energy.objects.get(d_id=d_id)
-                    t2.enrgy20 = en30
+                    t2.enrgy50 = en40
                     t2.save()
                     t3 = energy.objects.get(d_id=d_id)
-                    t3.enrgy30 = en40
+                    t3.enrgy40 = en30
                     t3.save()
                     t4 = energy.objects.get(d_id=d_id)
-                    t4.enrgy40 = en50
+                    t4.enrgy30 = en20
                     t4.save()
                     t5 = energy.objects.get(d_id=d_id)
-                    t5.enrgy50 = en60
-                    print(t5.enrgy50)
-                    print(en60)
+                    t5.enrgy20 = en10
                     t5.save()
                     t6 = energy.objects.get(d_id=d_id)
-                    t6.enrgy60 = eno60
+                    t6.enrgy10 = eno10
                     t6.save()
                     return Response("data updated", status=status.HTTP_201_CREATED)
 #  comparing time
@@ -1318,6 +1314,12 @@ def addallList(request):
         print("sdfa",ID)
         h = oneHourEnergy.objects.filter(d_id=ID)
         hJson = onehourenSerializers(h, many=True)
+        if oneHourEnergy.objects.filter(d_id=ID).exists():
+            print("pass")
+            pass
+        else:
+            hener = oneHourEnergy.objects.create(d_id=ID);
+            hener.save();
         for h1 in hJson.data:
             he1 = h1['hour1']
             he2 = h1['hour2']
@@ -1365,24 +1367,25 @@ def addallList(request):
             global oneHenergy
             oneHenergy = toFloat(en10) + toFloat(en20) + toFloat(en30) + toFloat(en40) + toFloat(en50) + toFloat(en60)
             print(oneHenergy)
-            if oneHourEnergy.objects.filter(d_id=d_id).exists():
-                print("pass")
-                pass
-            else:
-                hener = oneHourEnergy.objects.create(d_id=d_id);
-                hener.save();
-                print("hello")
+            # if oneHourEnergy.objects.filter(d_id=d_id).exists():
+            #     print("pass")
+            #     pass
+            # else:
+            #     hener = oneHourEnergy.objects.create(d_id=d_id);
+            #     hener.save();
+            #     print("hello")
+            #     pass
             # HE = oneHourEnergy.objects.get(d_id=d_id)
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour1 = he2
+            t.hour24 = he23
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
             #data1.delete()
             # return Response("1st hour Energy is: "+str(oneHenergy), status=status.HTTP_201_CREATED)
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour2 = he3
+            t.hour23 = he22
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1391,7 +1394,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour3=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour3 = he4
+            t.hour22 = he21
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1400,7 +1403,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour4=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour4 = he5
+            t.hour21 = he20
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1409,7 +1412,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour5=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour5 = he6
+            t.hour20 = he19
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1418,7 +1421,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour6=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour6 = he7
+            t.hour19 = he18
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1427,7 +1430,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour7=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour7 = he8
+            t.hour18 = he17
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1436,7 +1439,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour8=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour8 = he9
+            t.hour17 = he16
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1445,7 +1448,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour9=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour9 = he10
+            t.hour16 = he15
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1454,7 +1457,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour10=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour10 = he11
+            t.hour15 = he14
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1463,7 +1466,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour11=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour11 = he12
+            t.hour14 = he13
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1472,7 +1475,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour12=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour12 = he13
+            t.hour13 = he12
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1481,7 +1484,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour13=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour13 = he14
+            t.hour12 = he11
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1490,7 +1493,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour14=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour14 = he15
+            t.hour11 = he10
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1499,7 +1502,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour15=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour15 = he16
+            t.hour10 = he9
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1508,7 +1511,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour16=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour16 = he17
+            t.hour9 = he8
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1517,7 +1520,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour17=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour17 = he18
+            t.hour8 = he7
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1526,7 +1529,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour18=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour18 = he19
+            t.hour7 = he6
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1535,7 +1538,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour19=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour19 = he20
+            t.hour6 = he5
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1544,7 +1547,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour20=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour20 = he21
+            t.hour5 = he4
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1553,7 +1556,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour21=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour21 = he22
+            t.hour4 = he3
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1562,7 +1565,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour22=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour22 = he23
+            t.hour3 = he2
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1571,7 +1574,7 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour23=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour23 = he24
+            t.hour2 = he1
             t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
@@ -1580,8 +1583,9 @@ def addallList(request):
         #elif oneHourEnergy.objects.filter(d_id=d_id, hour24=0).exists():
             # print("I am in.")
             t = oneHourEnergy.objects.get(d_id=d_id)
-            t.hour24 = oneHenergy
+            t.hour1 = oneHenergy
             t.save()
+            
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             #data1 = energy.objects.filter(d_id=request.GET['d_id'])
             #data1.delete()
@@ -1597,6 +1601,13 @@ def oneyearList(request):
         print("sdfa",ID)
         h = oneyeardata.objects.filter(d_id=ID)
         hJson = oneyearenSerializers(h, many=True)
+        if oneyeardata.objects.filter(d_id=ID).exists():
+            print("pass")
+            pass
+        else:
+            hener = oneyeardata.objects.create(d_id=ID);
+            hener.save();
+            print("hello")
         for yarr1 in hJson.data:
             yy1 = yarr1['day1']
             yy2 = yarr1['day2']
@@ -2004,382 +2015,373 @@ def oneyearList(request):
             xcall = toFloat(xc) + toFloat(xc2) + toFloat(xc3) + toFloat(xc4) + toFloat(xc5) + toFloat(xc6) + toFloat(xc7) + toFloat(xc8) + toFloat(xc9) + toFloat(xc10) + toFloat(xc11) + toFloat(xc12) + toFloat(xc13) + toFloat(xc14) + toFloat(xc15) + toFloat(xc16) + toFloat(xc17) + toFloat(xc18) + toFloat(xc19) + toFloat(xc20) + toFloat(xc21) + toFloat(xc22) + toFloat(xc23) + toFloat(xc24)
             print("one day Energy: ", xcall)
 
-            if oneyeardata.objects.filter(d_id=d_id).exists():
-                print("pass")
-                pass
-            else:
-                hener = oneyeardata.objects.create(d_id=d_id);
-                hener.save();
-                print("hello")
-            
             t = oneyeardata.objects.get(d_id=d_id)
-            t.day1 = yy2
-            t.save()
-            t.day2 = yy3
-            t.day3 = yy4
-            t.day4 = yy5
-            t.day5 = yy6
-            t.day6 = yy7
-            t.day7 = yy8
-            t.day8 = yy9
-            t.day9 = yy10
-            t.day10 = yy11
-            t.day11 = yy12
-            t.day12 = yy13
-            t.day13 = yy14
-            t.day14 = yy15
-            t.day15 = yy16
-            t.day16 = yy17
-            t.day17 = yy18
-            t.day18 = yy19
-            t.day19 = yy20
-            t.day20 = yy21
-            t.day21 = yy22
-            t.day22 = yy23
-            t.day23 = yy24
-            t.day24 = yy25
-            t.day25 = yy26
-            t.day26 = yy27
-            t.day27 = yy28
-            t.day28 = yy29
-            t.day29 = yy30
-            t.day30 = yy31
-            t.day31 = yy32
-            t.day32 = yy33
-            t.day33 = yy34
-            t.day34 = yy35
-            t.day35 = yy36
-            t.day36 = yy37
-            t.day37 = yy38
-            t.day38 = yy39
-            t.day39 = yy40
-            t.day40 = yy41
-            t.day41 = yy42
-            t.day42 = yy43
-            t.day43 = yy44
-            t.day44 = yy45
-            t.day45 = yy46
-            t.day46 = yy47
-            t.day47 = yy48
-            t.day48 = yy49
-            t.day49 = yy50
-            t.day50 = yy51
-            t.day51 = yy52
-            t.day52 = yy53
-            t.day53 = yy54
-            t.day54 = yy55
-            t.day55 = yy56
-            t.day56 = yy57
-            t.day57 = yy58
-            t.day58 = yy59
-            t.day59 = yy60
-            t.day60 = yy61
-            t.day61 = yy62
-            t.day62 = yy63
-            t.day63 = yy64
-            t.day64 = yy65
-            t.day65 = yy66
-            t.day66 = yy67
-            t.day67 = yy68
-            t.day68 = yy69
-            t.day69 = yy70
-            t.day70 = yy71
-            t.day71 = yy72
-            t.day72 = yy73
-            t.day73 = yy74
-            t.day74 = yy75
-            t.day75 = yy76
-            t.day76 = yy77
-            t.day77 = yy78
-            t.day78 = yy79
-            t.day79 = yy80
-            t.day80 = yy81
-            t.day81 = yy82
-            t.day82 = yy83
-            t.day83 = yy84
-            t.day84 = yy85
-            t.day85 = yy86
-            t.day86 = yy87
-            t.day87 = yy88
-            t.day88 = yy89
-            t.day89 = yy90
-            t.day90 = yy91
-            t.day91 = yy92
-            t.day92 = yy93
-            t.day93 = yy94
-            t.day94 = yy95
-            t.day95 = yy96
-            t.day96 = yy97
-            t.day97 = yy98
-            t.day98 = yy99
-            t.day99 = yy100
-            t.day100 = yy101
-            t.day101 = yy102
-            t.day102 = yy103
-            t.day103 = yy104
-            t.day104 = yy105
-            t.day105 = yy106
-            t.day106 = yy107
-            t.day107 = yy108
-            t.day108 = yy109
-            t.day109 = yy110
-            t.day110 = yy111
-            t.day111 = yy112
-            t.day112 = yy113
-            t.day113 = yy114
-            t.day114 = yy115
-            t.day115 = yy116
-            t.day116 = yy117
-            t.day117 = yy118
-            t.day118 = yy119
-            t.day119 = yy120
-            t.day120 = yy121
-            t.day121 = yy122
-            t.day122 = yy123
-            t.day123 = yy124
-            t.day124 = yy125
-            t.day125 = yy126
-            t.day126 = yy127
-            t.day127 = yy128
-            t.day128 = yy129
-            t.day129 = yy130
-            t.day130 = yy131
-            t.day131 = yy132
-            t.day132 = yy133
-            t.day133 = yy134
-            t.day134 = yy135
-            t.day135 = yy136
-            t.day136 = yy137
-            t.day137 = yy138
-            t.day138 = yy139
-            t.day139 = yy140
-            t.day140 = yy141
-            t.day141 = yy142
-            t.day142 = yy143
-            t.day143 = yy144
-            t.day144 = yy145
-            t.day145 = yy146
-            t.day146 = yy147
-            t.day147 = yy148
-            t.day148 = yy149
-            t.day149 = yy150
-            t.day150 = yy151
-            t.day151 = yy152
-            t.day152 = yy153
-            t.day153 = yy154
-            t.day154 = yy155
-            t.day155 = yy156
-            t.day156 = yy157
-            t.day157 = yy158
-            t.day158 = yy159
-            t.day159 = yy160
-            t.day160 = yy161
-            t.day161 = yy162
-            t.day162 = yy163
-            t.day163 = yy164
-            t.day164 = yy165
-            t.day165 = yy166
-            t.day166 = yy167
-            t.day167 = yy168
-            t.day168 = yy169
-            t.day169 = yy170
-            t.day170 = yy171
-            t.day171 = yy172
-            t.day172 = yy173
-            t.day173 = yy174
-            t.day174 = yy175
-            t.day175 = yy176
-            t.day176 = yy177
-            t.day177 = yy178
-            t.day178 = yy179
-            t.day179 = yy180
-            t.day180 = yy181
-            t.day181 = yy182
-            t.day182 = yy183
-            t.day183 = yy184
-            t.day184 = yy185
-            t.day185 = yy186
-            t.day186 = yy187
-            t.day187 = yy188
-            t.day188 = yy189
-            t.day189 = yy190
-            t.day190 = yy191
-            t.day191 = yy192
-            t.day192 = yy193
-            t.day193 = yy194
-            t.day194 = yy195
-            t.day195 = yy196
-            t.day196 = yy197
-            t.day197 = yy198
-            t.day198 = yy199
-            t.day199 = yy200
-            t.day200 = yy201
-            t.day201 = yy202
-            t.day202 = yy203
-            t.day203 = yy204
-            t.day204 = yy205
-            t.day205 = yy206
-            t.day206 = yy207
-            t.day207 = yy208
-            t.day208 = yy209
-            t.day209 = yy210
-            t.day210 = yy211
-            t.day211 = yy212
-            t.day212 = yy213
-            t.day213 = yy214
-            t.day214 = yy215
-            t.day215 = yy216
-            t.day216 = yy217
-            t.day217 = yy218
-            t.day218 = yy219
-            t.day219 = yy220
-            t.day220 = yy221
-            t.day221 = yy222
-            t.day222 = yy223
-            t.day223 = yy224
-            t.day224 = yy225
-            t.day225 = yy226
-            t.day226 = yy227
-            t.day227 = yy228
-            t.day228 = yy229
-            t.day229 = yy230
-            t.day230 = yy231
-            t.day231 = yy232
-            t.day232 = yy233
-            t.day233 = yy234
-            t.day234 = yy235
-            t.day235 = yy236
-            t.day236 = yy237
-            t.day237 = yy238
-            t.day238 = yy239
-            t.day239 = yy240
-            t.day240 = yy241
-            t.day241 = yy242
-            t.day242 = yy243
-            t.day243 = yy244
-            t.day244 = yy245
-            t.day245 = yy246
-            t.day246 = yy247
-            t.day247 = yy248
-            t.day248 = yy249
-            t.day249 = yy250
-            t.day250 = yy251
-            t.day251 = yy252
-            t.day252 = yy253
-            t.day253 = yy254
-            t.day254 = yy255
-            t.day255 = yy256
-            t.day256 = yy257
-            t.day257 = yy258
-            t.day258 = yy259
-            t.day259 = yy260
-            t.day260 = yy261
-            t.day261 = yy262
-            t.day262 = yy263
-            t.day263 = yy264
-            t.day264 = yy265
-            t.day265 = yy266
-            t.day266 = yy267
-            t.day267 = yy268
-            t.day268 = yy269
-            t.day269 = yy270
-            t.day270 = yy271
-            t.day271 = yy272
-            t.day272 = yy273
-            t.day273 = yy274
-            t.day274 = yy275
-            t.day275 = yy276
-            t.day276 = yy277
-            t.day277 = yy278
-            t.day278 = yy279
-            t.day279 = yy280
-            t.day280 = yy281
-            t.day281 = yy282
-            t.day282 = yy283
-            t.day283 = yy284
-            t.day284 = yy285
-            t.day285 = yy286
-            t.day286 = yy287
-            t.day287 = yy288
-            t.day288 = yy289
-            t.day289 = yy290
-            t.day290 = yy291
-            t.day291 = yy292
-            t.day292 = yy293
-            t.day293 = yy294
-            t.day294 = yy295
-            t.day295 = yy296
-            t.day296 = yy297
-            t.day297 = yy298
-            t.day298 = yy299
-            t.day299 = yy300
-            t.day300 = yy301
-            t.day301 = yy302
-            t.day302 = yy303
-            t.day303 = yy304
-            t.day304 = yy305
-            t.day305 = yy306
-            t.day306 = yy307
-            t.day307 = yy308
-            t.day308 = yy309
-            t.day309 = yy310
-            t.day310 = yy311
-            t.day311 = yy312
-            t.day312 = yy313
-            t.day313 = yy314
-            t.day314 = yy315
-            t.day315 = yy316
-            t.day316 = yy317
-            t.day317 = yy318
-            t.day318 = yy319
-            t.day319 = yy320
-            t.day320 = yy321
-            t.day321 = yy322
-            t.day322 = yy323
-            t.day323 = yy324
-            t.day324 = yy325
-            t.day325 = yy326
-            t.day326 = yy327
-            t.day327 = yy328
-            t.day328 = yy329
-            t.day329 = yy330
-            t.day330 = yy331
-            t.day331 = yy332
-            t.day332 = yy333
-            t.day333 = yy334
-            t.day334 = yy335
-            t.day335 = yy336
-            t.day336 = yy337
-            t.day337 = yy338
-            t.day338 = yy339
-            t.day339 = yy340
-            t.day340 = yy341
-            t.day341 = yy342
-            t.day342 = yy343
-            t.day343 = yy344
-            t.day344 = yy345
-            t.day345 = yy346
-            t.day346 = yy347
-            t.day347 = yy348
-            t.day348 = yy349
-            t.day349 = yy350
-            t.day350 = yy351
-            t.day351 = yy352
-            t.day352 = yy353
-            t.day353 = yy354
-            t.day354 = yy355
-            t.day355 = yy356
-            t.day356 = yy357
-            t.day357 = yy358
-            t.day358 = yy359
-            t.day359 = yy360
-            t.day360 = yy361
-            t.day361 = yy362
-            t.day362 = yy363
-            t.day363 = yy364
-            t.day364 = yy365
-            t.day365 = yy366
-            t.day366 = xcall
+            t.day366 = yy365
+            t.day365 = yy364
+            t.day364 = yy363
+            t.day363 = yy362
+            t.day362 = yy361
+            t.day361 = yy360
+            t.day360 = yy359
+            t.day359 = yy358
+            t.day358 = yy357
+            t.day357 = yy356
+            t.day356 = yy355
+            t.day355 = yy354
+            t.day354 = yy353
+            t.day353 = yy352
+            t.day352 = yy351
+            t.day351 = yy350
+            t.day350 = yy349
+            t.day349 = yy348
+            t.day348 = yy347
+            t.day347 = yy346
+            t.day346 = yy345
+            t.day345 = yy344
+            t.day344 = yy343
+            t.day343 = yy342
+            t.day342 = yy341
+            t.day341 = yy340
+            t.day340 = yy339
+            t.day339 = yy338
+            t.day338 = yy337
+            t.day337 = yy336
+            t.day336 = yy335
+            t.day335 = yy334
+            t.day334 = yy333
+            t.day333 = yy332
+            t.day332 = yy331
+            t.day331 = yy330
+            t.day330 = yy329
+            t.day329 = yy328
+            t.day328 = yy327
+            t.day327 = yy326
+            t.day326 = yy325
+            t.day325 = yy324
+            t.day324 = yy323
+            t.day323 = yy322
+            t.day322 = yy321
+            t.day321 = yy320
+            t.day320 = yy319
+            t.day319 = yy318
+            t.day318 = yy317
+            t.day317 = yy316
+            t.day316 = yy315
+            t.day315 = yy314
+            t.day314 = yy313
+            t.day313 = yy312
+            t.day312 = yy311
+            t.day311 = yy310
+            t.day310 = yy309
+            t.day309 = yy308
+            t.day308 = yy307
+            t.day307 = yy306
+            t.day306 = yy305
+            t.day305 = yy304
+            t.day304 = yy303
+            t.day303 = yy302
+            t.day302 = yy301
+            t.day301 = yy300
+            t.day300 = yy299
+            t.day299 = yy298
+            t.day298 = yy297
+            t.day297 = yy296
+            t.day296 = yy295
+            t.day295 = yy294
+            t.day294 = yy293
+            t.day293 = yy292
+            t.day292 = yy291
+            t.day291 = yy290
+            t.day290 = yy289
+            t.day289 = yy288
+            t.day288 = yy287
+            t.day287 = yy286
+            t.day286 = yy285
+            t.day285 = yy284
+            t.day284 = yy283
+            t.day283 = yy282
+            t.day282 = yy281
+            t.day281 = yy280
+            t.day280 = yy279
+            t.day279 = yy278
+            t.day278 = yy277
+            t.day277 = yy276
+            t.day276 = yy275
+            t.day275 = yy274
+            t.day274 = yy273
+            t.day273 = yy272
+            t.day272 = yy271
+            t.day271 = yy270
+            t.day270 = yy269
+            t.day269 = yy268
+            t.day268 = yy267
+            t.day267 = yy266
+            t.day266 = yy265
+            t.day265 = yy264
+            t.day264 = yy263
+            t.day263 = yy262
+            t.day262 = yy261
+            t.day261 = yy260
+            t.day260 = yy259
+            t.day259 = yy258
+            t.day258 = yy257
+            t.day257 = yy256
+            t.day256 = yy255
+            t.day255 = yy254
+            t.day254 = yy253
+            t.day253 = yy252
+            t.day252 = yy251
+            t.day251 = yy250
+            t.day250 = yy249
+            t.day249 = yy248
+            t.day248 = yy247
+            t.day247 = yy246
+            t.day246 = yy245
+            t.day245 = yy244
+            t.day244 = yy243
+            t.day243 = yy242
+            t.day242 = yy241
+            t.day241 = yy240
+            t.day240 = yy239
+            t.day239 = yy238
+            t.day238 = yy237
+            t.day237 = yy236
+            t.day236 = yy235
+            t.day235 = yy234
+            t.day234 = yy233
+            t.day233 = yy232
+            t.day232 = yy231
+            t.day231 = yy230
+            t.day230 = yy229
+            t.day229 = yy228
+            t.day228 = yy227
+            t.day227 = yy226
+            t.day226 = yy225
+            t.day225 = yy224
+            t.day224 = yy223
+            t.day223 = yy222
+            t.day222 = yy221
+            t.day221 = yy220
+            t.day220 = yy219
+            t.day219 = yy218
+            t.day218 = yy217
+            t.day217 = yy216
+            t.day216 = yy215
+            t.day215 = yy214
+            t.day214 = yy213
+            t.day213 = yy212
+            t.day212 = yy211
+            t.day211 = yy210
+            t.day210 = yy209
+            t.day209 = yy208
+            t.day208 = yy207
+            t.day207 = yy206
+            t.day206 = yy205
+            t.day205 = yy204
+            t.day204 = yy203
+            t.day203 = yy202
+            t.day202 = yy201
+            t.day201 = yy200
+            t.day200 = yy199
+            t.day199 = yy198
+            t.day198 = yy197
+            t.day197 = yy196
+            t.day196 = yy195
+            t.day195 = yy194
+            t.day194 = yy193
+            t.day193 = yy192
+            t.day192 = yy191
+            t.day191 = yy190
+            t.day190 = yy189
+            t.day189 = yy188
+            t.day188 = yy187
+            t.day187 = yy186
+            t.day186 = yy185
+            t.day185 = yy184
+            t.day184 = yy183
+            t.day183 = yy182
+            t.day182 = yy181
+            t.day181 = yy180
+            t.day180 = yy179
+            t.day179 = yy178
+            t.day178 = yy177
+            t.day177 = yy176
+            t.day176 = yy175
+            t.day175 = yy174
+            t.day174 = yy173
+            t.day173 = yy172
+            t.day172 = yy171
+            t.day171 = yy170
+            t.day170 = yy169
+            t.day169 = yy168
+            t.day168 = yy167
+            t.day167 = yy166
+            t.day166 = yy165
+            t.day165 = yy164
+            t.day164 = yy163
+            t.day163 = yy162
+            t.day162 = yy161
+            t.day161 = yy160
+            t.day160 = yy159
+            t.day159 = yy158
+            t.day158 = yy157
+            t.day157 = yy156
+            t.day156 = yy155
+            t.day155 = yy154
+            t.day154 = yy153
+            t.day153 = yy152
+            t.day152 = yy151
+            t.day151 = yy150
+            t.day150 = yy149
+            t.day149 = yy148
+            t.day148 = yy147
+            t.day147 = yy146
+            t.day146 = yy145
+            t.day145 = yy144
+            t.day144 = yy143
+            t.day143 = yy142
+            t.day142 = yy141
+            t.day141 = yy140
+            t.day140 = yy139
+            t.day139 = yy138
+            t.day138 = yy137
+            t.day137 = yy136
+            t.day136 = yy135
+            t.day135 = yy134
+            t.day134 = yy133
+            t.day133 = yy132
+            t.day132 = yy131
+            t.day131 = yy130
+            t.day130 = yy129
+            t.day129 = yy128
+            t.day128 = yy127
+            t.day127 = yy126
+            t.day126 = yy125
+            t.day125 = yy124
+            t.day124 = yy123
+            t.day123 = yy122
+            t.day122 = yy121
+            t.day121 = yy120
+            t.day120 = yy119
+            t.day119 = yy118
+            t.day118 = yy117
+            t.day117 = yy116
+            t.day116 = yy115
+            t.day115 = yy114
+            t.day114 = yy113
+            t.day113 = yy112
+            t.day112 = yy111
+            t.day111 = yy110
+            t.day110 = yy109
+            t.day109 = yy108
+            t.day108 = yy107
+            t.day107 = yy106
+            t.day106 = yy105
+            t.day105 = yy104
+            t.day104 = yy103
+            t.day103 = yy102
+            t.day102 = yy101
+            t.day101 = yy100
+            t.day100 = yy99
+            t.day99 = yy98
+            t.day98 = yy97
+            t.day97 = yy96
+            t.day96 = yy95
+            t.day95 = yy94
+            t.day94 = yy93
+            t.day93 = yy92
+            t.day92 = yy91
+            t.day91 = yy90
+            t.day90 = yy89
+            t.day89 = yy88
+            t.day88 = yy87
+            t.day87 = yy86
+            t.day86 = yy85
+            t.day85 = yy84
+            t.day84 = yy83
+            t.day83 = yy82
+            t.day82 = yy81
+            t.day81 = yy80
+            t.day80 = yy79
+            t.day79 = yy78
+            t.day78 = yy77
+            t.day77 = yy76
+            t.day76 = yy75
+            t.day75 = yy74
+            t.day74 = yy73
+            t.day73 = yy72
+            t.day72 = yy71
+            t.day71 = yy70
+            t.day70 = yy69
+            t.day69 = yy68
+            t.day68 = yy67
+            t.day67 = yy66
+            t.day66 = yy65
+            t.day65 = yy64
+            t.day64 = yy63
+            t.day63 = yy62
+            t.day62 = yy61
+            t.day61 = yy60
+            t.day60 = yy59
+            t.day59 = yy58
+            t.day58 = yy57
+            t.day57 = yy56
+            t.day56 = yy55
+            t.day55 = yy54
+            t.day54 = yy53
+            t.day53 = yy52
+            t.day52 = yy51
+            t.day51 = yy50
+            t.day50 = yy49
+            t.day49 = yy48
+            t.day48 = yy47
+            t.day47 = yy46
+            t.day46 = yy45
+            t.day45 = yy44
+            t.day44 = yy43
+            t.day43 = yy42
+            t.day42 = yy41
+            t.day41 = yy40
+            t.day40 = yy39
+            t.day39 = yy38
+            t.day38 = yy37
+            t.day37 = yy36
+            t.day36 = yy35
+            t.day35 = yy34
+            t.day34 = yy33
+            t.day33 = yy32
+            t.day32 = yy31
+            t.day31 = yy30
+            t.day30 = yy29
+            t.day29 = yy28
+            t.day28 = yy27
+            t.day27 = yy26
+            t.day26 = yy25
+            t.day25 = yy24
+            t.day24 = yy23
+            t.day23 = yy22
+            t.day22 = yy21
+            t.day21 = yy20
+            t.day20 = yy19
+            t.day19 = yy18
+            t.day18 = yy17
+            t.day17 = yy16
+            t.day16 = yy15
+            t.day15 = yy14
+            t.day14 = yy13
+            t.day13 = yy12
+            t.day12 = yy11
+            t.day11 = yy10
+            t.day10 = yy9
+            t.day9 = yy8
+            t.day8 = yy7
+            t.day7 = yy6
+            t.day6 = yy5
+            t.day5 = yy4
+            t.day4 = yy3
+            t.day3 = yy2
+            t.day2 = yy1
+            t.day1 = xcall
             t.save()
     return render(request, 'billpredictionday.html')
             # for i in range(1, 365+1):
@@ -2413,6 +2415,13 @@ def threeYlist(request):
         print("sdfa",ID)
         h = oneyeardata.objects.filter(d_id=ID)
         hJson = oneyearenSerializers(h, many=True)
+        if threeyears.objects.filter(d_id=ID).exists():
+            print("pass")
+            pass
+        else:
+            hener = threeyears.objects.create(d_id=ID);
+            hener.save();
+            print("hello")
         for yarr1 in hJson.data:
             d_id = yarr1['d_id']
         result = 0
@@ -2435,17 +2444,11 @@ def threeYlist(request):
             yaya1 = tya["year1"]
             yaya2 = tya["year2"]
             yaya3 = tya["year3"]
-        if threeyears.objects.filter(d_id=d_id).exists():
-            print("pass")
-            pass
-        else:
-            hener = threeyears.objects.create(d_id=d_id);
-            hener.save();
-            print("hello")
+        
         # if threeyears.objects.filter(d_id=d_id, year1='').exists():
         #     print("I am in.")
         t = threeyears.objects.get(d_id=d_id)
-        t.year1 = yaya2
+        t.year3 = yaya2
         t.save()
         # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
         # data1 = oneyeardata.objects.filter(d_id=request.GET['d_id'])
@@ -2454,7 +2457,7 @@ def threeYlist(request):
         # elif threeyears.objects.filter(d_id=d_id, year2='').exists():
         #     print("I am in.")
         t = threeyears.objects.get(d_id=d_id)
-        t.year2 = yaya3
+        t.year2 = yaya1
         t.save()
             # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);
             # data1 = oneyeardata.objects.filter(d_id=request.GET['d_id'])
@@ -2463,7 +2466,7 @@ def threeYlist(request):
         # elif threeyears.objects.filter(d_id=d_id, year3='').exists():
         #     print("I am in.")
         t = threeyears.objects.get(d_id=d_id)
-        t.year3 = result
+        t.year1 = result
         t.save()
                 
                 # oneHourEnergy.objects.filter(d_id=d_id).update(hour1=oneHenergy);

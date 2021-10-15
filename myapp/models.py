@@ -67,7 +67,7 @@ class room(models.Model):
 
 class allDevices(models.Model):
     d_id = models.CharField(max_length=40, default=0,primary_key=True)
-
+   
 class device(models.Model):
     user=models.ForeignKey(User,on_delete=models.CASCADE)
     r_id = models.ForeignKey(room, on_delete=models.CASCADE)
@@ -193,6 +193,19 @@ class userimages(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     images = models.ImageField(upload_to='profile_picture', blank=True)
 
+    
+class subuseraccess(models.Model):
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    emailtest = EmailField()
+    email = models.CharField(primary_key=True, max_length=100)
+
+class subuserplace(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner_name = models.CharField(max_length=20, blank=True)
+    name = models.CharField(max_length=100, blank=False)
+    email = models.ForeignKey(subuseraccess, on_delete=models.CASCADE)
+    p_id = models.ForeignKey(place, on_delete=models.CASCADE)
+
 class SomeModel(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,primary_key=True)
     file = models.CharField(max_length=499999, blank=True, default=defprofoto())
@@ -213,8 +226,6 @@ class subuserplace(models.Model):
     name = models.CharField(max_length=100, blank=False)
     email = models.ForeignKey(subuseraccess, on_delete=models.CASCADE)
     p_id = models.ForeignKey(place, on_delete=models.CASCADE)
-
-
 
 # class Profile(models.Model):
 #     # user = models.OneToOneField(User ,on_delete=models.CASCADE)

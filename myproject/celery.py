@@ -35,5 +35,41 @@ def mytk(self):
         sleep(25)
 
 @app.task(bind=True)
+def perdaytask(self):
+    url = 'http://127.0.0.1:8000/schedulebillprediction/'
+
+    # while True:
+    #     print("refreshing...")
+    webbrowser.open(url, new=0)
+    sleep(5)
+
+@app.task(bind=True)
+def peryearstask(self):
+    url = 'http://127.0.0.1:8000/schedulebillpredictionday/'
+
+    # while True:
+    #     print("refreshing...")
+    webbrowser.open(url, new=0)
+    sleep(5)
+
+
+@app.task(bind=True)
+def threeyearstask(self):
+    url = 'http://127.0.0.1:8000/schedulebillpredictionyear/'
+
+    # while True:
+    #     print("refreshing...")
+    webbrowser.open(url, new=0)
+    sleep(5)
+
+@app.task(bind=True)
 def debug_task(self):
     print(f'Request: {self.request!r}')
+
+# Commands for Celery
+
+########  Schedule the tasks than run these commands  #########
+
+# 1. celery -A myproject beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+# 2. celery -A myproject worker -l INFO
+# 3. python3 manage.py runserver
