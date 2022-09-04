@@ -679,7 +679,7 @@ def pinschedulingdevice(request):
 def pinscheduling(request):
     if request.method == "GET":
         device_data = pinschedule.objects.filter(user=request.user)
-        schJson = pinscheduleSerializers(device_data, many=True)
+        schJson = pinSerializers(device_data, many=True)
         return Response(schJson.data)
 
     elif request.method == "POST":
