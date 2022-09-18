@@ -1,0 +1,286 @@
+/*
+
+Simple House
+
+https://templatemo.com/tm-539-simple-house
+
+*/
+/* Bootstrap grid system  */
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+/*.container {*/
+/*  width: 100%;*/
+/*  max-width: 1200px;*/
+/*  margin-right: auto;*/
+/*  margin-left: auto;*/
+/*}*/
+
+.tm-container-inner,
+.tm-container-inner-2 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.row11 {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+/*.col-lg-3,*/
+/*.col-lg-4,*/
+/*.col-lg-6,*/
+/*.col-md-4,*/
+/*.col-md-6,*/
+/*.col-sm-6,*/
+/*.col-12 {*/
+/*  position: relative;*/
+/*  width: 200%;*/
+/*  padding-right: 15px;*/
+/*  padding-left: 15px;*/
+/*}*/
+
+/*.col-12 {*/
+/*  -ms-flex: 0 0 100%;*/
+/*  flex: 0 0 100%;*/
+/*  max-width: 100%;*/
+/*}*/
+
+/*@media (min-width: 576px) {*/
+/*  .col-sm-6 {*/
+/*    -ms-flex: 0 0 50%;*/
+/*    flex: 0 0 50%;*/
+/*    max-width: 50%;*/
+/*  }*/
+/*}*/
+
+/*@media (min-width: 768px) {*/
+/*  .col-md-4 {*/
+/*    -ms-flex: 0 0 33.333333%;*/
+/*    flex: 0 0 33.333333%;*/
+/*    max-width: 33.333333%;*/
+/*  }*/
+
+/*  .col-md-6 {*/
+/*    -ms-flex: 0 0 50%;*/
+/*    flex: 0 0 50%;*/
+/*    max-width: 50%;*/
+/*  }*/
+/*}*/
+
+/*@media (min-width: 992px) {*/
+/*  .col-lg-3 {*/
+/*    -ms-flex: 0 0 25%;*/
+/*    flex: 0 0 25%;*/
+/*    max-width: 25%;*/
+/*  }*/
+
+/*  .col-lg-4 {*/
+/*    -ms-flex: 0 0 33.333333%;*/
+/*    flex: 0 0 33.333333%;*/
+/*    max-width: 33.333333%;*/
+/*  }*/
+
+/*  .col-lg-6 {*/
+/*    -ms-flex: 0 0 50%;*/
+/*    flex: 0 0 50%;*/
+/*    max-width: 50%;*/
+/*  }*/
+/*}*/
+
+/*
+  primary: #2D99CC
+  success: #319966
+  danger: #993332
+*/
+
+.img-fluid {
+  max-width: 121%;
+  height: 200px;
+}
+
+/*body {*/
+/*  font-family: 'Open Sans', Arial, sans-serif;*/
+/*  font-size: 17px;*/
+/*  background-color: #ccc;*/
+/*  overflow-x: hidden;*/
+/*}*/
+
+
+p, address {
+  color: #ffffff;
+  line-height: 1.8;
+}
+
+
+
+.tm-site-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+
+.tm-site-description {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+
+.tm-section-title {
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.tm-gallery {
+  margin-bottom: 80px;
+}
+
+.tm-gallery-page {
+  max-width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.tm-gallery-description {
+  font-size: 0.95rem;
+}
+
+.tm-section,
+.tm-container-inner,
+.tm-container-inner-2 {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+  .tm-gallery-page {
+    max-width: 560px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .tm-gallery-page,
+  .tm-section,
+  .tm-container-inner,
+  .tm-container-inner-2 {
+    max-width: 840px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .tm-gallery-page,
+  .tm-section {
+    max-width: 1120px;
+  }
+
+  .tm-container-inner {
+    max-width: 1120px;
+  }
+
+  .tm-container-inner-2 {
+    max-width: 900px;
+  }
+}
+
+.tm-gallery-item {
+  max-width: 280px;
+}
+
+.tm-gallery-img {
+  margin-bottom: 40px;
+  margin-top: 30px;
+  margin-left: -48px;
+}
+
+.tm-gallery-title {
+  font-size: 1.3rem;
+  font-weight: 401;
+  color: #1690E5;
+  margin-bottom: 15px;
+  margin-left: -36px;
+}
+
+.tm-gallery-description {
+  margin-bottom: 20px;
+}
+
+.tm-gallery-price {
+  font-size: 1.25rem;
+  color: #2F956D;
+  margin-bottom: 60px;
+}
+
+.tm-paging-links {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tm-paging-item {
+  list-style: none;
+  display: inline-block;
+  border: 1px solid #2F956D;
+  margin: 7px;
+}
+
+.tm-paging-link {
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #2F956D;
+  background-color: transparent;
+}
+
+.tm-paging-link.active,
+.tm-paging-link:hover {
+  background-color: #2F956D;
+  color: white;
+}
+
+.tm-description-figure {
+  text-align: center;
+}
+
+.tm-description-box {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tm-description-box {
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  max-width: 530px;
+}
+
+@media (min-width: 768px) {
+  .tm-description-box {
+    padding-left: 5px;
+    padding-right: 40px;
+    margin-top: 0;
+  }
+}
