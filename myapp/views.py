@@ -580,6 +580,40 @@ def devicePinStatus(request):
         if received_json_data['put']!='yes':
             serializer = deviceStatusSerializers(data=request.data)
             if serializer.is_valid():
+                print('all set')
+                x1 = received_json_data['sensor1']
+                x2 = received_json_data['sensor2']
+                x3 = received_json_data['sensor3']
+                x4 = received_json_data['sensor4']
+                x5 = received_json_data['sensor5']
+                x6 = received_json_data['sensor6']
+                x7 = received_json_data['sensor7']
+                x8 = received_json_data['sensor8']
+                x9 = received_json_data['sensor9']
+                x10 = received_json_data['sensor10']
+
+                print("AEnoss ",x1)
+                if x1 > 5:
+                    getAlldata(device_id)
+                
+                if x2 > 5: 
+                    getAlldata(device_id)
+                if x3 > 5:
+                    getAlldata(device_id)
+                if x4 > 5:
+                    getAlldata(device_id)
+                if x5 > 5:
+                    getAlldata(device_id)
+                if x6 > 5:
+                    getAlldata(device_id)
+                if x7 > 5:
+                    getAlldata(device_id)
+                if x8 > 5:
+                    getAlldata(device_id)
+                if x9 > 5:
+                    getAlldata(device_id)
+                if x10 > 5:
+                    getAlldata(device_id)
                 serializer.save()
                 return Response("data created", status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -597,6 +631,66 @@ def devicePinStatus(request):
                 serializer.save()
                 return Response("data updated", status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def send_fcm_message(x,fcmToken):
+    urls_api ="https://fcm.googleapis.com/fcm/send"
+    server_key ="key=AAAAUOxNlRo:APA91bFeXi6tYaX5dP4OKKQHFfNK62CCbg36p59jp1VUHOQL9GDiyY8pGLmDqJ6XWq4dcVzr03OcgKevyY--gSqMHmK48tvlDulp69m_ATAa4IoHSV_YRwd91uDPlDIGfbwAlAUhu3b"
+        
+    fcm_message={"to":fcmToken,
+                "notification":{
+                "body":"Sensor "+str(x)+ " is High",
+                "title":"200",
+                "subtitle":"200" }
+                 }
+   
+    headersdata = {
+            'Authorization': "key=AAAAUOxNlRo:APA91bFeXi6tYaX5dP4OKKQHFfNK62CCbg36p59jp1VUHOQL9GDiyY8pGLmDqJ6XWq4dcVzr03OcgKevyY--gSqMHmK48tvlDulp69m_ATAa4IoHSV_YRwd91uDPlDIGfbwAlAUhu3bk",
+            'Content-Type': 'application/json; UTF-8',
+        }
+
+    print('Message sent',headersdata)
+  # [END use_access_token]
+    resp = requests.post(urls_api, data=json.dumps(fcm_message), headers=headersdata)
+    # resp=""
+    print(resp.status_code)
+    if resp.status_code == 200:
+            print('Message sent to Firebase for delivery, response:')
+            print(resp.text)
+    else:
+            print('Unable to send message to Firebase')
+            print(resp.text)
+### new
+@api_view(["POST"])
+def fire(request):
+    received_json_data=json.loads(request.body)
+    print(received_json_data)
+        # if received_json_data['put']!='yes':
+    serializer = FirebaseSer (data=request.data)
+        
+
+    if serializer.is_valid():
+        serializer.save()
+        # return Response(res.json())
+        return Response("data created", status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+    #    return response
+
+
+
+
+def getAlldata(dId):
+    getUser = device.objects.get(d_id=dId)
+    print(getUser.user)
+    getUsernFirebasetable(getUser.user)
+
+def getUsernFirebasetable(userData):
+    getUser = FirebaseDetails.objects.get(user=userData)
+    print(getUser.fcm)
+
+    send_fcm_message(1,getUser.fcm)
 
 ################################### Update Pin Status For DilogFlow ###################################  OK GOOGLE  ######################
 

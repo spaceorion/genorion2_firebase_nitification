@@ -31,7 +31,7 @@ admin.site.register(oneHourEnergy)
 admin.site.register(oneyeardata)
 admin.site.register(threeyears)
 
-# admin.site.register(Profile)
+admin.site.register(FirebaseDetails)
 
 
 

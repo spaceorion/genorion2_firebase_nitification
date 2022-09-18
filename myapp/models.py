@@ -672,7 +672,10 @@ class threeyears(models.Model):
 # class Videos(models.Model):
 #     video = EmbedVideoField()
 
-
+class FirebaseDetails(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    d_id = models.OneToOneField(allDevices, on_delete=models.CASCADE,primary_key=True)
+    fcm = models.TextField()
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:

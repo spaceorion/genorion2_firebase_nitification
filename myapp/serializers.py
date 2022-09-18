@@ -4,7 +4,7 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from drf_braces.serializers.form_serializer import FormSerializer
 from myapp.forms import UserRegisterForm, SubUserRegisterForm
-from myapp.models import SomeModel, oneyeardata,place,floor,flat,room,device,deviceStatus,pinschedule,emergencyNumber,sensors,ssidPassword,pinName, threeyears,userimages,deviceIpAddress,subuseraccess,subuserplace,tempuser,tempUserVerification,otptemplogin, energy, oneHourEnergy
+from myapp.models import SomeModel, oneyeardata,place,floor,flat,room,device,deviceStatus,pinschedule,emergencyNumber,sensors,ssidPassword,pinName, threeyears,userimages,deviceIpAddress,subuseraccess,subuserplace,tempuser,tempUserVerification,otptemplogin, energy, oneHourEnergy,FirebaseDetails
 
 class userSerializers(serializers.ModelSerializer):
     class Meta:
@@ -217,6 +217,10 @@ class threeyearenSerializers(serializers.ModelSerializer):
     class Meta:
         model = threeyears
         fields = '__all__'     
+class FirebaseSer(serializers.ModelSerializer):
+    class Meta:
+        model = FirebaseDetails
+        fields = '__all__'
 
 
 
