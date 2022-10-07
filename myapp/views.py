@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 from celery import shared_task
 # import pandas as pd
 import smtplib
-
+import sqlite3
 from django.http import response
 from requests.api import request
 from myapp.models import userimages
@@ -581,7 +581,9 @@ def devicePinStatus(request):
             serializer = deviceStatusSerializers(data=request.data)
             if serializer.is_valid():
                 print('all set')
+
                 x1 = received_json_data['sensor1']
+                print(x1)
                 x2 = received_json_data['sensor2']
                 x3 = received_json_data['sensor3']
                 x4 = received_json_data['sensor4']
@@ -591,35 +593,39 @@ def devicePinStatus(request):
                 x8 = received_json_data['sensor8']
                 x9 = received_json_data['sensor9']
                 x10 = received_json_data['sensor10']
+                device_id=received_json_data['d_id']
+                print('kkkkkkkk',device_id)
 
                 print("AEnoss ",x1)
                 if x1 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 1',device_id)
                 
                 if x2 > 5: 
-                    getAlldata(device_id)
+                    getAlldata('sensor 2',device_id)
                 if x3 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 3',device_id)
                 if x4 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 4',device_id)
                 if x5 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 5',device_id)
                 if x6 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 6',device_id)
                 if x7 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 7',device_id)
                 if x8 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 8',device_id)
                 if x9 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 9',device_id)
                 if x10 > 5:
-                    getAlldata(device_id)
+                    getAlldata('sensor 10',device_id)
                 serializer.save()
                 return Response("data created", status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
         else:
             device_id=received_json_data['d_id']
+
+           
             print('123')
             try:
                 print('qwe')
@@ -628,24 +634,59 @@ def devicePinStatus(request):
                 return Response(status=status.HTTP_404_NOT_FOUND)
             serializer = deviceStatusSerializers(device_object, data=request.data)
             if serializer.is_valid():
+                x1 = received_json_data['sensor1']
+                print(x1,'sensor1')
+                x2 = received_json_data['sensor2']
+                x3 = received_json_data['sensor3']
+                x4 = received_json_data['sensor4']
+                x5 = received_json_data['sensor5']
+                x6 = received_json_data['sensor6']
+                x7 = received_json_data['sensor7']
+                x8 = received_json_data['sensor8']
+                x9 = received_json_data['sensor9']
+                x10 = received_json_data['sensor10']
+                device_id = received_json_data['d_id']
+                
+                print("AEnosspppppp ",device_id)
+                if x1 > 5:
+                    getAlldata('sensor 1',device_id)
+                    
+                if x2 > 5: 
+                    getAlldata('sensor 2',device_id)
+                if x3 > 5:
+                        getAlldata('sensor 3',device_id)
+                if x4 > 5:
+                    getAlldata('sensor 4',device_id)
+                if x5 > 5:
+                        getAlldata('sensor 5',device_id)
+                if x6 > 5:
+                        getAlldata('sensor 6',device_id)
+                if x7 > 5:
+                        getAlldata('sensor 7',device_id)
+                if x8 > 5:
+                        getAlldata('sensor 8',device_id)
+                if x9 > 5:
+                        getAlldata('sensor 9',device_id)
+                if x10 > 5:
+                    getAlldata('sensor 10',device_id)
                 serializer.save()
                 return Response("data updated", status=status.HTTP_201_CREATED)
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#####
 
-
-def send_fcm_message(x,fcmToken):
+def send_fcm_message(x,fcmToken,dId):
     urls_api ="https://fcm.googleapis.com/fcm/send"
-    server_key ="key=AAAAUOxNlRo:APA91bFeXi6tYaX5dP4OKKQHFfNK62CCbg36p59jp1VUHOQL9GDiyY8pGLmDqJ6XWq4dcVzr03OcgKevyY--gSqMHmK48tvlDulp69m_ATAa4IoHSV_YRwd91uDPlDIGfbwAlAUhu3b"
+    server_key ="key=AAAAN55IUao:APA91bGE83B0ZR2MZAME36f6ELkTvcuT5BZwJGrbiH5O9zeDDaRqGBIPSQXJvaN97b9uA5UWZmaDVTrx01kJys6M0ATtrupgO4VcvMyFAwlJAkVo08en4DtfA1czFMLwdsJk4C3G4PBt"
         
     fcm_message={"to":fcmToken,
                 "notification":{
-                "body":"Sensor "+str(x)+ " is High",
-                "title":"200",
-                "subtitle":"200" }
+                "body":""+str(x)+ " is High",
+                "title":"Device Id : "+str(dId),
+                "subtitle":"" }
                  }
    
     headersdata = {
-            'Authorization': "key=AAAAUOxNlRo:APA91bFeXi6tYaX5dP4OKKQHFfNK62CCbg36p59jp1VUHOQL9GDiyY8pGLmDqJ6XWq4dcVzr03OcgKevyY--gSqMHmK48tvlDulp69m_ATAa4IoHSV_YRwd91uDPlDIGfbwAlAUhu3bk",
+            'Authorization': "key=AAAAN55IUao:APA91bGE83B0ZR2MZAME36f6ELkTvcuT5BZwJGrbiH5O9zeDDaRqGBIPSQXJvaN97b9uA5UWZmaDVTrx01kJys6M0ATtrupgO4VcvMyFAwlJAkVo08en4DtfA1czFMLwdsJk4C3G4PBt",
             'Content-Type': 'application/json; UTF-8',
         }
 
@@ -676,21 +717,101 @@ def fire(request):
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-    #    return response
+   ### #    return response
+# @api_view(["POST"])
+# def SceneDetail(request):
+#     received_json_data=json.loads(request.body)
+#     print(received_json_data)
+#         # if received_json_data['put']!='yes':
+#     serializer = sceneSerializers (data=request.data)
+        
+
+#     if serializer.is_valid():
+#         serializer.save()
+#         # return Response(res.json())
+#         return Response("data created", status=status.HTTP_201_CREATED)
+#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+#####
+
+@api_view(['GET','POST','PUT','DELETE'])
+def ScenedeviceDetail(request):
+    if request.method == 'GET':
+        scene_data =scene_devices.objects.filter(scenedevices_id=request.GET['scenedevices_id'])
+        serializers = Scenedevice_Serializer(scene_data,many=True)
+        return Response(serializers.data)
+
+    elif(request.method == 'POST'):
+        serializers = Scenedevice_Serializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response("Post and Data Created", status=status.HTTP_201_CREATED)
+            
+        return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "PUT":
+        received_json_data=json.loads(request.body)
+        device_id=received_json_data['scenedevices_id']
+        try:
+            device_object=scene_devices.objects.get(scenedevices_id=device_id)
+        except device_object.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = Scenedevice_Serializer(device_object, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response("data updated", status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#####
+@api_view(['GET','POST','PUT','DELETE'])
+def SceneDetail(request):
+    if request.method == 'GET':
+        scene_data =scene.objects.filter(user=request.GET['user'])
+        serializers = sceneSerializers(scene_data,many=True)
+        return Response(serializers.data)
+        
+        
+
+    elif(request.method == 'POST'):
+        serializers = sceneSerializers(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response("Post and Data Created", status=status.HTTP_201_CREATED)
+            
+        return Response(serializers.errors,status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "PUT":
+        received_json_data=json.loads(request.body)
+        device_id=received_json_data['scene_id']
+        try:
+            device_object=scene.objects.get(scene_id=device_id)
+        except device_object.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        serializer = sceneSerializers(device_object, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response("data updated", status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # elif request.method == "DELETE":
+        
+    #     device_data =scene.objects.filter(user = request.GET['user'], id=request.GET['id'])
+    #     device_data.delete()
+    #     return response("remove")
+
+####
 
 
-
-
-def getAlldata(dId):
+def getAlldata(x,dId):
+    print('getalldata')
     getUser = device.objects.get(d_id=dId)
     print(getUser.user)
-    getUsernFirebasetable(getUser.user)
 
-def getUsernFirebasetable(userData):
-    getUser = FirebaseDetails.objects.get(user=userData)
-    print(getUser.fcm)
 
-    send_fcm_message(1,getUser.fcm)
+    getUsernFirebasetable(x,getUser.user)
+
+
+def getUsernFirebasetable(x,userData):
+    getUserFirebase = FirebaseDetails.objects.get(user=userData)
+    print(getUserFirebase.fcm)
+
+    send_fcm_message(x,getUserFirebase.fcm,getUserFirebase.d_id.d_id)   
 
 ################################### Update Pin Status For DilogFlow ###################################  OK GOOGLE  ######################
 
@@ -773,7 +894,7 @@ def pinschedulingdevice(request):
 def pinscheduling(request):
     if request.method == "GET":
         device_data = pinschedule.objects.filter(user=request.user)
-        schJson = pinSerializers(device_data, many=True)
+        schJson = pinscheduleSerializers(device_data, many=True)
         return Response(schJson.data)
 
     elif request.method == "POST":

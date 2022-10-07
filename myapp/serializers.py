@@ -4,7 +4,22 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from drf_braces.serializers.form_serializer import FormSerializer
 from myapp.forms import UserRegisterForm, SubUserRegisterForm
-from myapp.models import SomeModel, oneyeardata,place,floor,flat,room,device,deviceStatus,pinschedule,emergencyNumber,sensors,ssidPassword,pinName, threeyears,userimages,deviceIpAddress,subuseraccess,subuserplace,tempuser,tempUserVerification,otptemplogin, energy, oneHourEnergy,FirebaseDetails
+from myapp.models import SomeModel, oneyeardata,place,floor,flat,room,device,deviceStatus,pinschedule,emergencyNumber,sensors,ssidPassword,pinName, threeyears,userimages,deviceIpAddress,subuseraccess,subuserplace,tempuser,tempUserVerification,otptemplogin, energy, oneHourEnergy,FirebaseDetails,scene,scene_devices
+import time
+##
+class Scenedevice_Serializer(serializers.ModelSerializer):
+    starttime  = serializers.SerializerMethodField('epoch')
+
+    def epoch(self, obj):
+        """ Return epoch time for a datetime object or ``None``"""
+        try:
+            return int(time.mktime(obj.time.timetuple()))
+        except (AttributeError, TypeError):
+            return None
+
+    class Meta:
+        model = scene_devices
+        fields =  ('time','starttime','scene_id','scenedevices_id','d_id','scene_device_type','status',)
 
 class userSerializers(serializers.ModelSerializer):
     class Meta:
@@ -42,6 +57,11 @@ class subuser_register(FormSerializer):
 class placeSerializers(serializers.ModelSerializer):
     class Meta:
         model = place
+        fields = '__all__'
+        ##
+class sceneSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = scene
         fields = '__all__'
 
 class placenameSerializers(serializers.ModelSerializer):
@@ -165,6 +185,10 @@ class otploginSerializers(serializers.ModelSerializer):
 #         model = PhoneOTP
 #         fields = '__all__'
 
+class FirebaseSer(serializers.ModelSerializer):
+    class Meta:
+        model = FirebaseDetails
+        fields = '__all__'
 class tempuserregisterSerializers(serializers.ModelSerializer):
     class Meta:
         model = tempuser
@@ -217,10 +241,6 @@ class threeyearenSerializers(serializers.ModelSerializer):
     class Meta:
         model = threeyears
         fields = '__all__'     
-class FirebaseSer(serializers.ModelSerializer):
-    class Meta:
-        model = FirebaseDetails
-        fields = '__all__'
 
 
 

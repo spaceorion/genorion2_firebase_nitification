@@ -1,3 +1,5 @@
+
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 from django.db.models.fields import CharField, EmailField
 # from embed_video.fields import EmbedVideoField
@@ -668,14 +670,50 @@ class threeyears(models.Model):
     year2 = models.CharField(max_length=50, blank=True)
     year3 = models.CharField(max_length=50, blank=True)
 
-    
-# class Videos(models.Model):
-#     video = EmbedVideoField()
-
 class FirebaseDetails(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     d_id = models.OneToOneField(allDevices, on_delete=models.CASCADE,primary_key=True)
     fcm = models.TextField()
+#####
+# class scene(models.Model):
+#     user = models.ForeignKey(User, on_delete=models.CASCADE)
+#     scene_id = models.CharField(max_length = 10,blank=False,unique=True,primary_key=True,default=create_new_ref_number)
+#     scene_type = models.CharField(max_length=15)
+#     def __str__(self):
+#         return  str (self.user)
+# ###
+# class scene_devices(models.Model):
+   
+#     scene_id = models.ForeignKey(scene, max_length=10, null=False, default=1,on_delete=models.CASCADE)
+#     scenedevices_id = models.CharField(max_length = 10, blank=False,unique=True,primary_key=True,default=create_new_ref_number)
+#     d_id = models.CharField(max_length=50 )
+#     scene_device_type = models.CharField(max_length=15)
+#     status = models.IntegerField(validators=[MinValueValidator(0),
+#                                        MaxValueValidator(10)])
+    
+#     time = models.DateTimeField()
+    
+#     class Meta:
+#         ordering = ('time',)
+# class Videos(models.Model):
+#     video = EmbedVideoField()
+class scene(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    scene_id = models.CharField(max_length = 10,blank=False,unique=True,primary_key=True,default=create_new_ref_number)
+    scene_type = models.CharField(max_length=15)
+class scene_devices(models.Model):
+    
+    scene_id = models.ForeignKey(scene, max_length=10, null=False, default=1,on_delete=models.CASCADE)
+    scenedevices_id = models.CharField(max_length = 10, blank=False,unique=True,primary_key=True,default=create_new_ref_number)
+    d_id = models.CharField(max_length=15)
+    scene_device_type = models.CharField(max_length=15)
+    status = models.IntegerField(validators=[MinValueValidator(0),
+                                       MaxValueValidator(10)])
+    time = models.DateTimeField()
+    
+                                       
+    
+
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:

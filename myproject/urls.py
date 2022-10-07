@@ -77,12 +77,18 @@ urlpatterns = [
     path('subfindsubdata/', myapp_view.subuserfindsubuser),
 
     path('getuid/', myapp_view.useridList),
+    path('notification/', myapp_view.fire),
 
 ###############  Getting Names    ####################
     path('getyouplacename/', myapp_view.placenamelist),
     path('getyoufloorname/', myapp_view.floornamelist),
     path('getyouflatname/', myapp_view.flatnamelist),
     path('getyouroomname/', myapp_view.roomnamelist),
+    path('scenedetail/', myapp_view.SceneDetail),
+    path('scenedevice/', myapp_view.ScenedeviceDetail),
+
+
+
 
 
 ########## for main user to get the list of subuser  ##############
