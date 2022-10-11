@@ -28,6 +28,7 @@ SECRET_KEY = 'n&de6$-$c0*p^0fznh=h!xx2gd-=2_)s*^t__!!@h03l#$-syy'
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+##### origin9007
 
 
 # Application definition
@@ -256,3 +257,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'spaceorion2021@gmail.com'
 EMAIL_HOST_PASSWORD = 'flgtdjikabtzvpvv'
+####
