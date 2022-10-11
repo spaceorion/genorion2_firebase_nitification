@@ -56,7 +56,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'corsheaders',
     # 'django_celery',
-    # 'django_crontab',
+    'django_crontab',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
