@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'channels',
    
-    # 'embed_video',
+    'embed_video',
     'rest_framework',
     'reset_migrations',
     'rest_framework.authtoken',
