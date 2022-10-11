@@ -1,5 +1,6 @@
 amqp==5.1.1
 asgiref==3.5.2
+async-timeout==4.0.2
 attrs==22.1.0
 autobahn==22.7.1
 Automat==20.2.0
@@ -17,11 +18,19 @@ constantly==15.1.0
 cryptography==37.0.4
 daphne==3.0.2
 dateutils==0.6.12
+Deprecated==1.2.13
 dj-database-url==1.0.0
 Django==4.0.7
+django-background-tasks==1.2.5
 django-celery-beat==2.3.0
 django-celery-results==2.4.0
+django-cleanup==6.0.0
+django-compat==1.0.15
 django-cors-headers==3.13.0
+django-crispy-forms==1.14.0
+django-crontab==0.7.1
+django-email==0.1.10
+django-embed-video==1.4.7
 django-phonenumber-field==6.3.0
 django-reset-migrations==0.4.0
 django-rest-framework-braces==0.3.4
@@ -35,6 +44,7 @@ icalendar==4.1.0
 idna==3.3
 incremental==21.3.0
 kombu==5.2.4
+packaging==21.3
 phonenumbers==8.12.54
 Pillow==9.2.0
 prompt-toolkit==3.0.30
@@ -44,9 +54,11 @@ pyasn1-modules==0.2.8
 pycparser==2.21
 PyJWT==2.4.0
 pyOpenSSL==22.0.0
+pyparsing==3.0.9
 python-crontab==2.6.0
 python-dateutil==2.8.2
 pytz==2022.2.1
+redis==4.3.4
 requests==2.28.1
 service-identity==21.1.0
 six==1.16.0
@@ -60,4 +72,5 @@ urllib3==1.26.11
 vine==5.0.0
 wcwidth==0.2.5
 whitenoise==6.2.0
+wrapt==1.14.1
 zope.interface==5.4.0
