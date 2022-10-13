@@ -33,6 +33,7 @@ django-crontab==0.7.1
 django-email==0.1.10
 django-embed-video==1.4.7
 django-phonenumber-field==6.3.0
+django-redis==3.1.6
 django-reset-migrations==0.4.0
 django-rest-framework-braces==0.3.4
 django-scheduler==0.9.6
