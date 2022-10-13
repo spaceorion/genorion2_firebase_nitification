@@ -1,4 +1,5 @@
 amqp==5.1.1
+asgi-redis==1.4.3
 asgiref==3.5.2
 async-timeout==4.0.2
 attrs==22.1.0
@@ -44,6 +45,7 @@ icalendar==4.1.0
 idna==3.3
 incremental==21.3.0
 kombu==5.2.4
+msgpack-python==0.5.6
 packaging==21.3
 phonenumbers==8.12.54
 Pillow==9.2.0
