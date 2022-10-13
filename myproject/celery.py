@@ -51,8 +51,16 @@ def peryearstask(self):
     #     print("refreshing...")
     webbrowser.open(url, new=0)
     sleep(5)
+##http://127.0.0.1:8000/tempuserautodelete/
+##
+@app.task(bind=True)
+def peryearstask(self):
+    url = 'http://127.0.0.1:8000/tempuserautodelete/'
 
-
+    # while True:
+    #     print("refreshing...")
+    webbrowser.open(url, new=0)
+    sleep(5)
 @app.task(bind=True)
 def threeyearstask(self):
     url = 'http://127.0.0.1:8000/schedulebillpredictionyear/'

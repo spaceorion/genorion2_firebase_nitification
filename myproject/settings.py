@@ -57,7 +57,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'corsheaders',
     # 'django_celery',
-    'django_crontab',
+    # 'django_crontab',
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -126,7 +126,7 @@ CORS_ALLOW_METHODS = [
     "PUT",
 ]
 ROOT_URLCONF = 'myproject.urls'
-
+####   sudo apt-get install redis-server
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -156,6 +156,16 @@ CHANNEL_LAYERS = {
         },
     },
 }
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "asgi_redis.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+#         },
+#         "ROUTING": "chat.routing.channel_routing",
+#     },
+# }
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
