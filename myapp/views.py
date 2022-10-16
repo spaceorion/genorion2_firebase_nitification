@@ -760,6 +760,11 @@ def ScenedeviceDetail(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
+        
+        device_data =scene_devices.objects.filter(scenedevices_id=request.GET['scenedevices_id'])
+        device_data.delete()
+        return response("remove user data")
 #####
 @api_view(['GET','POST','PUT','DELETE'])
 def SceneDetail(request):
@@ -789,11 +794,11 @@ def SceneDetail(request):
             serializer.save()
             return Response("data updated", status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    # elif request.method == "DELETE":
+    elif request.method == "DELETE":
         
-    #     device_data =scene.objects.filter(user = request.GET['user'], id=request.GET['id'])
-    #     device_data.delete()
-    #     return response("remove")
+        device_data =scene.objects.filter(user = request.GET['user'], id=request.GET['id'])
+        device_data.delete()
+        return response("remove")
 
 ####
 
